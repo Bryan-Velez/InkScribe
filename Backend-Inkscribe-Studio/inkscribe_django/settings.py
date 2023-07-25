@@ -30,7 +30,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "inkscribe-api.vercel.app",
-    "127.0.0.1"
+    "127.0.0.1",
+    "localhost"
 ]
 
 
@@ -154,11 +155,12 @@ CORS_ALLOWED_ORIGINS = [
     "https://sub.example.com",
     "http://localhost:5173",
     "http://127.0.0.1:5555",
-]
+    "http://127.0.0.1:8000",]
 
 CORS_ALLOW_ALL_ORIGINS = True
 
 CSRF_TRUSTED_ORIGINS = [
     "https://inkscribe-api.vercel.app",
-    "http://localhost:5173"
+    "http://localhost:5173",
+    "http://127.0.0.1:8000",
 ]
