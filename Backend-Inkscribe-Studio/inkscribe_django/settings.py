@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import dotenv
+dotenv.load_dotenv()
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +28,10 @@ SECRET_KEY = 'django-insecure-$14yll#c5*c*$*xf#&cf_^*-3_bdl1d5opdcy^smbw+9w+$y!8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "inkscribe-api.vercel.app",
+    "127.0.0.1"
+]
 
 
 # Application definition
@@ -61,18 +67,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    "https://example.com",
-    "https://sub.example.com",
-    "http://localhost:5173",
-    "http://127.0.0.1:5555",
-]
-
-CORS_ALLOW_ALL_ORIGINS = True
-
-CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:5173"
-]
 
 ROOT_URLCONF = 'inkscribe_django.urls'
 
@@ -100,11 +94,13 @@ WSGI_APPLICATION = 'inkscribe_django.wsgi.application'
 
 DATABASES = {
     'default': {
+        'DATABASE_URL': os.getenv('DATABASE_URL'),
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'inkscribe',
-        'USER': 'inkscribeuser',
-        'PASSWORD': 'inkscribe',
-        'HOST': 'localhost',
+        'NAME': os.getenv('PGDATABASE'),
+        'USER': os.getenv('PGUSER'),
+        'PASSWORD': os.getenv('PGPASSWORD'),
+        'HOST': os.getenv('PGHOST'),
+        'PORT': os.getenv('PGPORT'),
     }
 }
 
@@ -149,3 +145,20 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+CORS_ALLOWED_ORIGINS = [
+    "inkscribe-api.vercel.app",
+    "https://example.com",
+    "https://sub.example.com",
+    "http://localhost:5173",
+    "http://127.0.0.1:5555",
+]
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+CSRF_TRUSTED_ORIGINS = [
+    "inkscribe-api.vercel.app",
+    "http://localhost:5173"
+]

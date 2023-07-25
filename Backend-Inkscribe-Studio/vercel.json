@@ -1,0 +1,14 @@
+{
+    "builds": [
+      {
+        "src": "inkscribe_django/wsgi.py",
+        "use": "@vercel/python"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "inkscribe_django/wsgi.py"
+      }
+    ]
+}
