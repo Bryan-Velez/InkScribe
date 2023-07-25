@@ -49,13 +49,7 @@ INSTALLED_APPS = [
     'corsheaders'
 ]
 
-REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
-}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -148,19 +142,28 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
+
 
 CORS_ALLOWED_ORIGINS = [
-    "https://inkscribe-api.vercel.app",
     "https://example.com",
     "https://sub.example.com",
     "http://localhost:5173",
     "http://127.0.0.1:5555",
-    "http://127.0.0.1:8000",]
+    "http://127.0.0.1:8000",
+    "https://inkscribe-api.vercel.app",
+]
 
 CORS_ALLOW_ALL_ORIGINS = True
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://inkscribe-api.vercel.app",
     "http://localhost:5173",
     "http://127.0.0.1:8000",
+    "https://inkscribe-api.vercel.app",
 ]
