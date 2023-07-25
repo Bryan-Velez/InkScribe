@@ -149,7 +149,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 CORS_ALLOWED_ORIGINS = [
-    "inkscribe-api.vercel.app",
+    "https://inkscribe-api.vercel.app",
     "https://example.com",
     "https://sub.example.com",
     "http://localhost:5173",
@@ -159,6 +159,6 @@ CORS_ALLOWED_ORIGINS = [
 CORS_ALLOW_ALL_ORIGINS = True
 
 CSRF_TRUSTED_ORIGINS = [
-    "inkscribe-api.vercel.app",
+    "https://inkscribe-api.vercel.app",
     "http://localhost:5173"
 ]
