@@ -80,13 +80,14 @@ class SpeechBubbleDetail(generics.RetrieveUpdateDestroyAPIView):
         queryset = self.get_queryset()
         obj = get_object_or_404(
             queryset,
-            page__comic_book__id=self.kwargs['comic_id'],
-            page__page_number=self.kwargs['page_number'],
-            panel_number=self.kwargs['panel_number'],
+            panel__page__comic_book__id=self.kwargs['comic_id'],
+            panel__page__page_number=self.kwargs['page_number'],
+            panel__panel_number=self.kwargs['panel_number'],
             bubble_number=self.kwargs['bubble_number']
         )
         self.check_object_permissions(self.request, obj)
         return obj
+    
 
 
 
