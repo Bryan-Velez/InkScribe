@@ -14,7 +14,6 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = UserSerializer
 
 
-@csrf_exempt
 class ComicList(generics.ListCreateAPIView):
     queryset = ComicBook.objects.all()
     serializer_class = ComicSerializer
