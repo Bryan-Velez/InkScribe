@@ -18,7 +18,7 @@ class ComicBook(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comic_books', blank=True, null=True)
     title = models.CharField(max_length=100)
     issue_number = models.IntegerField(blank=True, null=True)
-    photo_url = models.URLField(blank=True, null=True)
+    photo_url = models.TextField(blank=True, null=True)
     description = models.TextField()
 
     def __str__(self):
@@ -70,7 +70,7 @@ class SpeechBubble(models.Model):
     
 class Drawing(models.Model):
     panel = models.ForeignKey(Panel, on_delete=models.CASCADE, related_name='drawings')
-    photo_url = models.URLField(blank=True, null=True)
+    photo_url = models.TextField(blank=True, null=True)
     path = models.JSONField()  
 
     def __str__(self):

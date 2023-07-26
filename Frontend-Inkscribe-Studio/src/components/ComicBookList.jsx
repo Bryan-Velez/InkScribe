@@ -24,6 +24,9 @@ const ComicBookList = () => {
       });
   }, []);
 
+
+////////////////////////////////////////////////////////////////
+// Loading screen  
 if (loading) {
   return <Loading />;
 }
@@ -31,24 +34,43 @@ if (loading) {
 if (loadError) {
   return <div>Error: {loadError}</div>;
 }
-
+////////////////////////////////////////////////////////////////
+// Add Comic Book 
 const handleComicBookAdded = (newComicBook) => {
     setComicBooks((prevComicBooks) => [...prevComicBooks, newComicBook]);
   };
+  
+  
+  ////////////////////////////////////////////////////////////////
+  // Delete Comic Book
+  
+  const handleDeleteComicBook = async (id) => {
+    try {
+      // Make a DELETE request to delete the comic book
+      await axios.delete(`${URL}comicbooks/${id}/`);
+      // Remove the deleted comic book from the state
+      setComicBooks((prevComicBooks) => prevComicBooks.filter((comicBook) => comicBook.id !== id));
+    } catch (error) {
+      console.error("Error deleting comic book:", error);
+    }
+  };
+
 
   return (
     <div>
       <h1>Comic Books</h1>
       <ul>
         {comicBooks.map((comicBook) => (
-          <li key={comicBook.id}>{comicBook.title}</li>
+          <li key={comicBook.id}>
+            {comicBook.title}
+            <button onClick={() => handleDeleteComicBook(comicBook.id)}>Delete</button>
+          </li>
         ))}
       </ul>
       <ComicBookAdd onComicBookAdded={handleComicBookAdded} />
     </div>
   );
 };
-
 
 
 export default ComicBookList;
