@@ -8,16 +8,6 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ('id', 'username', 'email')
 
 
-class ComicSerializer(serializers.ModelSerializer):
-    pages = serializers.HyperlinkedRelatedField(
-        view_name='page-detail',
-        many=True,
-        read_only=True
-    )
-
-    class Meta:
-        model = ComicBook
-        fields = '__all__'
 
 
 class PanelSerializer(serializers.ModelSerializer):
@@ -26,7 +16,6 @@ class PanelSerializer(serializers.ModelSerializer):
         many=True,
         read_only=True
     )
-
     class Meta:
         model = Panel
         fields = '__all__'
@@ -46,9 +35,14 @@ class DrawingSerializer(serializers.ModelSerializer):
 
 class PageSerializer(serializers.ModelSerializer):
     panels = PanelSerializer(many=True, read_only=True)
-
     class Meta:
         model = Page
         fields = '__all__'
+    
 
+class ComicSerializer(serializers.ModelSerializer):
+    pages = PageSerializer(many=True, read_only=True)
+    class Meta:
+        model = ComicBook
+        fields = '__all__'
 

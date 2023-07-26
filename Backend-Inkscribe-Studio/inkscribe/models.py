@@ -29,7 +29,7 @@ class Page(models.Model):
     page_number = models.IntegerField()
 
     def __str__(self):
-        return f"Page {self.page_number} of {self.comic.title}"
+        return f"Page {self.page_number} of {self.comic_book.title}"
 
 
 
@@ -58,7 +58,8 @@ class SpeechBubble(models.Model):
     
 class Drawing(models.Model):
     panel = models.ForeignKey(Panel, on_delete=models.CASCADE, related_name='drawings')
+    photo_url = models.URLField(blank=True, null=True)
     path = models.JSONField()  
 
     def __str__(self):
-        return f"Drawing {self.id} in Panel {self.panel.id}"
+        return f"Drawing {self} in Panel {self.panel}"
