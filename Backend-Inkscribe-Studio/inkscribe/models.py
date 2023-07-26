@@ -15,7 +15,7 @@ class User(models.Model):
 
 
 class ComicBook(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comic_books')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comic_books', blank=True, null=True)
     title = models.CharField(max_length=100)
     issue_number = models.IntegerField(blank=True, null=True)
     photo_url = models.URLField(blank=True, null=True)
