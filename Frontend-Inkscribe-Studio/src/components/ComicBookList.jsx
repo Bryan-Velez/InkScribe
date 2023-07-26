@@ -4,7 +4,7 @@ import Loading from "./Loading";
 import ComicBookAdd from "./ComicBookAdd";
 
 const URL = import.meta.env.VITE_BASE_URL;
-// console.log(`${URL}comicbooks/`)
+console.log(`${URL}comicbooks/`)
 
 const ComicBookList = () => {
   const [comicBooks, setComicBooks] = useState([]);

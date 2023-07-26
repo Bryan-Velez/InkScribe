@@ -1,3 +1,4 @@
+from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, get_object_or_404
 from rest_framework import generics
 from .serializers import *
@@ -13,7 +14,7 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = UserSerializer
 
 
-
+@csrf_exempt
 class ComicList(generics.ListCreateAPIView):
     queryset = ComicBook.objects.all()
     serializer_class = ComicSerializer
