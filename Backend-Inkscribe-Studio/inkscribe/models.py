@@ -52,7 +52,7 @@ class SpeechBubble(models.Model):
     color = models.CharField(max_length=10)
 
     def __str__(self):
-        return f"Speech Bubble {self.id} in Panel {self.panel.id}"
+        return f"Speech Bubble {self} in Panel {self.panel}"
     
 
     

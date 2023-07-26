@@ -19,6 +19,7 @@ class PanelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Panel
         fields = '__all__'
+        lookup_field = 'panel_number'
 
 
 class SpeechBubbleSerializer(serializers.ModelSerializer):
@@ -38,6 +39,7 @@ class PageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Page
         fields = '__all__'
+        lookup_field = 'page_number' 
     
 
 class ComicSerializer(serializers.ModelSerializer):
