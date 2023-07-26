@@ -15,11 +15,12 @@ class User(models.Model):
 class ComicBook(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comic_books')
     title = models.CharField(max_length=100)
-    photo_url = models.URLField
+    issue_number = models.IntegerField(blank=True, null=True)
+    photo_url = models.URLField(blank=True, null=True)
     description = models.TextField()
 
     def __str__(self):
-        return self.title
+        return f"{self.title} by {self.user.username}"
         
 
 
@@ -27,6 +28,9 @@ class Page(models.Model):
     comic_book = models.ForeignKey(ComicBook, on_delete=models.CASCADE, related_name='pages')
     created_at = models.DateTimeField(default=timezone.now)
     page_number = models.IntegerField()
+
+    class Meta:
+        unique_together = ('comic_book', 'page_number')
 
     def __str__(self):
         return f"Page {self.page_number} of {self.comic_book.title}"
@@ -39,20 +43,26 @@ class Panel(models.Model):
     x = models.IntegerField()
     y = models.IntegerField()
 
+    class Meta:
+        unique_together = ('page', 'panel_number')
+
     def __str__(self):
-        return f"Panel {self.panel_number} of {self.page.page_number}"
+        return f"Panel {self.panel_number} of {self.page.page_number} in {self.page.comic_book.title}"
 
 
 
 class SpeechBubble(models.Model):
     panel = models.ForeignKey(Panel, on_delete=models.CASCADE, related_name='speech_bubbles')
+    bubble_number = models.IntegerField(blank=True, null=True)
     x = models.IntegerField()
     y = models.IntegerField()
     text = models.TextField()
     color = models.CharField(max_length=10)
+    class Meta:
+        unique_together = ('panel', 'bubble_number')
 
     def __str__(self):
-        return f"Speech Bubble {self} in Panel {self.panel}"
+        return f"Speech Bubble {self.bubble_number} in Panel {self.panel.panel_number} of Page {self.panel.page.page_number} in {self.panel.page.comic_book.title}"
     
 
     

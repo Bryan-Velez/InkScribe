@@ -10,23 +10,26 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 
-class PanelSerializer(serializers.ModelSerializer):
-    speech_bubbles = serializers.HyperlinkedRelatedField(
-        view_name='speech-bubble-detail',
-        many=True,
-        read_only=True
-    )
-    class Meta:
-        model = Panel
-        fields = '__all__'
-        lookup_field = 'panel_number'
+      
 
 
 class SpeechBubbleSerializer(serializers.ModelSerializer):
+    panel = serializers.SlugRelatedField(
+        slug_field='panel_number', queryset=Panel.objects.all()
+    )
     class Meta:
         model = SpeechBubble
         fields = '__all__'
 
+class PanelSerializer(serializers.ModelSerializer):
+    speech_bubbles = SpeechBubbleSerializer(many=True, read_only=True)
+    page = serializers.SlugRelatedField(
+        slug_field='page_number', queryset=Page.objects.all()
+    )
+      
+    class Meta:
+        model = Panel
+        fields = '__all__'
 
 class DrawingSerializer(serializers.ModelSerializer):
     class Meta:
@@ -39,7 +42,7 @@ class PageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Page
         fields = '__all__'
-        lookup_field = 'page_number' 
+
     
 
 class ComicSerializer(serializers.ModelSerializer):
