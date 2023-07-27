@@ -22,7 +22,10 @@ class ComicBook(models.Model):
     description = models.TextField()
 
     def __str__(self):
-        return f"{self.title} by {self.user.username}"
+        if self.user and self.user.username:
+            return f"{self.title} by {self.user.username}"
+        else:
+            return f"{self.title} (User not available)"
         
 
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams} from "react-router-dom"
 import axios from "axios";
 // import Loading from "./Loading";
+import PageList from "./PageList";
 
 const URL = import.meta.env.VITE_BASE_URL;
 
@@ -56,17 +57,17 @@ const ComicBookEdit = () => {
         Title:
         <input
           type="text"
-          value={comicBookData.title}
+          value={comicBookData.title  || ""}
           onChange={(e) =>
             setComicBookData({ ...comicBookData, title: e.target.value })
           }
         />
       </label>
       <label>
-        Photo URL:
+        Issue Cover:
         <input
           type="text"
-          value={comicBookData.photo_url}
+          value={comicBookData.photo_url  || ""}
           onChange={(e) =>
             setComicBookData({ ...comicBookData, photo_url: e.target.value })
           }
@@ -75,7 +76,7 @@ const ComicBookEdit = () => {
       <label>
         Description:
         <textarea
-          value={comicBookData.description}
+          value={comicBookData.description  || ""}
           onChange={(e) =>
             setComicBookData({ ...comicBookData, description: e.target.value })
           }
@@ -83,6 +84,17 @@ const ComicBookEdit = () => {
       </label>
       <button type="submit">Save Changes</button>
     </form>
+
+    <h1>Pages</h1>
+      {/* Horizontal scroll container */}
+      {/* <div className="page-scroll-container">
+        Loop through the pages and render each PageCard
+        {comicBookData.pages.map((page) => (
+          <PageList key={page.id} page={page} />
+        ))}
+      </div> */}
+
+      <PageList />
     </div>
   );
 };

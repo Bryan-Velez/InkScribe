@@ -49,3 +49,56 @@
   height: 200px;
   /* Add any other styling as needed */
 }
+
+
+/* .page-scroll-container {
+  display: flex;
+  overflow-x: scroll;
+  gap: 20px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.page-card {
+  flex: 0 0 auto;
+  min-width: 200px;
+  border: 1px solid #ccc;
+  padding: 10px;
+} */
+
+/* Add the following CSS to style the horizontal scroll container */
+.page-list-container {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.page-list {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* Add more styling to the .page-card for better visualization */
+.page-card {
+  display: inline-block;
+  width: 200px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+}
+
+.page-card img {
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+}
+
+.page-card h3 {
+  margin: 10px 0;
+}
+
+.page-card p {
+  font-size: 14px;
+  color: #666;
+}
