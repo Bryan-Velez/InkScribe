@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom"
 import axios from "axios";
 import Loading from "./Loading";
 import ComicBookAdd from "./ComicBookAdd";
@@ -62,7 +63,7 @@ const handleComicBookAdded = (newComicBook) => {
       <ul>
         {comicBooks.map((comicBook) => (
           <li key={comicBook.id}>
-            {comicBook.title}
+             <Link to={`/edit/${comicBook.id}`}>{comicBook.title}</Link>
             <button onClick={() => handleDeleteComicBook(comicBook.id)}>Delete</button>
           </li>
         ))}
