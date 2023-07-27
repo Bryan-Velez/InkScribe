@@ -28,6 +28,12 @@ class PageList(generics.ListCreateAPIView):
     queryset = Page.objects.all()
     serializer_class = PageSerializer
     lookup_field = 'page_number'
+
+    def get_queryset(self):
+        comic_id = self.kwargs['comic_id']  # Extract comic_id from the URL
+        return Page.objects.filter(comic_book__id=comic_id)
+    
+    
 class PageDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Page.objects.all()
     serializer_class = PageSerializer
