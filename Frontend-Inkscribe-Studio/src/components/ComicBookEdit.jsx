@@ -15,6 +15,7 @@ const ComicBookEdit = () => {
   });
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState(null);
+  const [formError, setFormError] = useState(null);
 
   useEffect(() => {
     axios
@@ -39,6 +40,10 @@ const ComicBookEdit = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (!comicBookData.title.trim()) {
+      setFormError("Title field is required.");
+      return;
+    }
     try {
       await axios.put(`${URL}comicbooks/${id}/`, comicBookData);
       // window.location.href = `/comicbooks/${id}`;
@@ -48,10 +53,11 @@ const ComicBookEdit = () => {
   };
 
   return (
-    <div>
+    <div className="comic-edit-page">
       <h1>Edit Comic Book</h1>
       <h3>{comicBookData.title}</h3>
       <form onSubmit={handleSubmit}>
+      {formError && <div>{formError}</div>}
         <label>
           Title:
           <input

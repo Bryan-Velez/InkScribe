@@ -5,6 +5,7 @@ import ComicBookList from "./components/ComicBookList";
 import ComicBookEdit from "./components/ComicBookEdit";
 import PanelDesign from "./components/PanelDesign";
 import Nav from "./components/Nav";
+import './App.css'
 
 const App = () => {
   return (

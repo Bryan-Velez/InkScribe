@@ -11,6 +11,8 @@ const ComicBookList = () => {
   const [comicBooks, setComicBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+
 
   useEffect(() => {
     axios
@@ -39,6 +41,8 @@ if (loadError) {
 // Add Comic Book 
 const handleComicBookAdded = (newComicBook) => {
     setComicBooks((prevComicBooks) => [...prevComicBooks, newComicBook]);
+    setShowModal(false); // Close the modal after comic book added
+
   };
   
   
@@ -47,14 +51,29 @@ const handleComicBookAdded = (newComicBook) => {
   
   const handleDeleteComicBook = async (id) => {
     try {
-      // Make a DELETE request to delete the comic book
       await axios.delete(`${URL}comicbooks/${id}/`);
-      // Remove the deleted comic book from the state
       setComicBooks((prevComicBooks) => prevComicBooks.filter((comicBook) => comicBook.id !== id));
     } catch (error) {
       console.error("Error deleting comic book:", error);
     }
   };
+  ////////////////////////////////////////////////////////////////
+  // Add Comic Book Modal
+
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+
+  // Close the modal
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  // const toggleModal = () => {
+  //   setShowModal((prevShowModal) => !prevShowModal);
+  // };
+
+
 
 
   return (
@@ -68,7 +87,32 @@ const handleComicBookAdded = (newComicBook) => {
           </li>
         ))}
       </ul>
+
+
+
+      {/* <button onClick={() => setShowModal(true)}>Add New Comic Book</button> */}
+{/* Modal */}
+{/* {showModal && (
+  <div className="modal-overlay">
+    <div className="modal">
       <ComicBookAdd onComicBookAdded={handleComicBookAdded} />
+      <button className="close" onClick={() => setShowModal(false)}>&times;</button>
+    </div>
+  </div>
+)} */}
+
+      <button onClick={handleOpenModal}>Add New Comic Book</button>
+      {showModal && (
+        <ComicBookAdd
+          onComicBookAdded={handleComicBookAdded}
+          onClose={handleCloseModal}
+        />
+      )}
+
+
+
+      {/* <button onClick={toggleModal}>Add Comic Book</button>
+      {showModal && <ComicBookAdd onComicBookAdded={handleComicBookAdded} onClose={toggleModal} />} */}
     </div>
   );
 };

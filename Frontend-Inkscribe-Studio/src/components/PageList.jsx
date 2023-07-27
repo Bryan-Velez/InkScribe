@@ -34,7 +34,7 @@ const PageList = ({ URL }) => {
   }
 
   return (
-    <div className="page-list-container">
+    <div className="page-scroll-container">
       <div className="page-list">
         {pages.map((page) => (
           <div className="page-card" key={page.id}>

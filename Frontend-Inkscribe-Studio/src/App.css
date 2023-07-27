@@ -5,53 +5,18 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
 
 .loading-animation {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 200px;
-  /* Add any other styling as needed */
 }
 
+/* //////////////////////////////////////////////////////////////// */
+/* Page Display */
 
-/* .page-scroll-container {
+.page-scroll-container {
   display: flex;
   overflow-x: scroll;
   gap: 20px;
@@ -59,26 +24,17 @@
   margin-bottom: 20px;
 }
 
+.page-list {
+  overflow-x: auto;
+  display: inline-block;
+  white-space: nowrap;
+}
+
 .page-card {
   flex: 0 0 auto;
   min-width: 200px;
   border: 1px solid #ccc;
   padding: 10px;
-} */
-
-/* Add the following CSS to style the horizontal scroll container */
-.page-list-container {
-  overflow-x: auto;
-  white-space: nowrap;
-}
-
-.page-list {
-  display: inline-block;
-  white-space: nowrap;
-}
-
-/* Add more styling to the .page-card for better visualization */
-.page-card {
   display: inline-block;
   width: 200px;
   margin-right: 10px;
@@ -102,3 +58,111 @@
   font-size: 14px;
   color: #666;
 }
+
+/* //////////////////////////////////////////////////////////////// */
+/* Modal Display */
+
+.modal-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.4); /* Semi-transparent background */
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #8d8d8d;
+  padding: 25px;
+  border: 1px solid #737373;
+  border-radius: 8px;
+  box-shadow: -4px 10px 10px rgba(69, 87, 205, 0.50);
+  max-width: 53vw;
+  display: flex;
+  flex-direction: column;
+}
+.modal h2 {
+  background-image: linear-gradient(to right, #8d8d8d9d, #8d8d8d9d, #b1b1b1, #b1b1b1, #b1b1b1, #8d8d8d9d, #8d8d8d9d);
+  color: rgb(115, 115, 115);
+  font-size: 50px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 5px #4a4a4a;
+  justify-self: center;
+  margin: 10px;
+}
+
+.modal form {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(0, 0, 0, 0.2);
+  width: 50vw;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.modal label {
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.modal input,
+.modal textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  width: 90%;
+  background-color: rgb(92, 118, 144);
+  align-self: center;
+}
+
+.modal button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: 1px solid rgb(158, 158, 158);
+}
+
+.modal button[type="submit"] {
+  background-color: #28a745;
+  width: 50%;
+  align-self: center;
+  margin-bottom: 30px; 
+  box-shadow: 2px 3px 3px#165e27;
+}
+
+.modal button[type="button"] {
+  align-self: flex-end;
+  background-color: #ff0019; 
+  box-shadow: 2px 3px 3px#5c0009;
+  font-size: large;
+}
+
+
+
+
+
+
+@media screen and (max-width: 1200px){
+  .modal button[type="submit"] {
+    
+  }
+}
+
+
+
+
+
+
+
