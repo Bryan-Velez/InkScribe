@@ -19,7 +19,7 @@ class ComicBook(models.Model):
     title = models.CharField(max_length=100)
     issue_number = models.IntegerField(blank=True, null=True)
     photo_url = models.TextField(blank=True, null=True)
-    description = models.TextField()
+    description = models.TextField(blank=True, null=True)
 
     def __str__(self):
         if self.user and self.user.username:
@@ -33,6 +33,8 @@ class Page(models.Model):
     comic_book = models.ForeignKey(ComicBook, on_delete=models.CASCADE, related_name='pages')
     created_at = models.DateTimeField(default=timezone.now)
     page_number = models.IntegerField()
+    photo_url = models.TextField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
 
     class Meta:
         unique_together = ('comic_book', 'page_number')
@@ -47,6 +49,7 @@ class Panel(models.Model):
     panel_number = models.IntegerField()
     x = models.IntegerField()
     y = models.IntegerField()
+    photo_url = models.TextField(blank=True, null=True)
 
     class Meta:
         unique_together = ('page', 'panel_number')
