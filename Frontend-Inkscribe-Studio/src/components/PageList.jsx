@@ -6,15 +6,15 @@ import { Link, useParams } from "react-router-dom";
 
 // const URL = import.meta.env.VITE_BASE_URL;
 
-const PageList = ({URL, comicBookId }) => {
-//   const { id } = useParams();
+const PageList = ({ URL }) => {
+  const { id } = useParams();
   const [pages, setPages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     axios
-      .get(`${URL}comicbooks/${comicBookId}/pages/`)
+      .get(`${URL}comicbooks/${id}/pages/`)
       .then((response) => {
         setPages(response.data);
         setLoading(false);
@@ -23,7 +23,7 @@ const PageList = ({URL, comicBookId }) => {
         setError("Error fetching pages data:", error);
         setLoading(false);
       });
-  }, [URL, comicBookId]);
+  }, [URL, id]);
 
   if (loading) {
     return <div>Loading pages...</div>;

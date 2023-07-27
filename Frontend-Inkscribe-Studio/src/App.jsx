@@ -13,9 +13,9 @@ const App = () => {
       <Nav/>
       <Routes>
         <Route exact path="/" element={<Home />}></Route>
-        <Route exact path="/comicbooks" element={<ComicBookList />}></Route>
-        <Route exact path="/edit/:id" element={<ComicBookEdit />}></Route>
-        <Route exact path="/paneldesign" element={<PanelDesign />}></Route>
+        <Route exact path="/comicbooks" element={<ComicBookList />}/>
+        <Route exact path="/edit/:id" element={<ComicBookEdit />}/>
+        <Route exact path="/paneldesign" element={<PanelDesign />}/>
       </Routes>
     </div>
   );
