@@ -4,17 +4,17 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 
-const URL = import.meta.env.VITE_BASE_URL;
+// const URL = import.meta.env.VITE_BASE_URL;
 
-const PageList = () => {
-  const { id } = useParams();
+const PageList = ({URL, comicBookId }) => {
+//   const { id } = useParams();
   const [pages, setPages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     axios
-      .get(`${URL}comicbooks/${id}/pages/`)
+      .get(`${URL}comicbooks/${comicBookId}/pages/`)
       .then((response) => {
         setPages(response.data);
         setLoading(false);
@@ -23,7 +23,7 @@ const PageList = () => {
         setError("Error fetching pages data:", error);
         setLoading(false);
       });
-  }, [id]);
+  }, [URL, comicBookId]);
 
   if (loading) {
     return <div>Loading pages...</div>;
@@ -42,7 +42,7 @@ const PageList = () => {
               <img src={page.imageUrl} alt={page.title} />
             </Link>
             <h3>{page.page_number}</h3>
-            <p>{page.description}</p>
+            {/* <p>{page.description}</p> */}
           </div>
         ))}
       </div>
