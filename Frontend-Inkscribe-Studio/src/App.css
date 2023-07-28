@@ -36,16 +36,18 @@
 
 .page-scroll-container {
   display: flex;
-  overflow-x: scroll;
   gap: 20px;
-  padding: 10px;
+  padding: 2%;
   margin-bottom: 20px;
+  background-color: #ff9564;
 }
 
 .page-list {
   overflow-x: auto;
   display: inline-block;
   white-space: nowrap;
+  padding: 20px;
+  background-color: #007bff;
 }
 
 .page-card {

@@ -46,6 +46,9 @@ const PageAdd = ({ comicBookId, onPageAdded, onClose }) => {
     event.stopPropagation();
   }
 
+////////////////////////////////////////////////////////////////
+// Return
+
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal" onClick={handleModalClick}>

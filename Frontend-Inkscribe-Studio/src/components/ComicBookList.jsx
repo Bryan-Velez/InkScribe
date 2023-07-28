@@ -13,7 +13,9 @@ const ComicBookList = () => {
   const [comicBooks, setComicBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState(null);
-  const [showModal, setShowModal] = useState(false);
+  const [showAddComicModal, setShowAddComicModal] = useState(false);
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+  const [comicToDelete, setComicToDelete] = useState(null);
 
   useEffect(() => {
     axios
@@ -29,7 +31,7 @@ const ComicBookList = () => {
   }, []);
 
   ////////////////////////////////////////////////////////////////
-  // Loading screen
+  // Loading Animation
   if (loading) {
     return <Loading />;
   }
@@ -41,18 +43,22 @@ const ComicBookList = () => {
   // Add Comic Book
   const handleComicBookAdded = (newComicBook) => {
     setComicBooks((prevComicBooks) => [...prevComicBooks, newComicBook]);
-    setShowModal(false);
+    setShowAddComicModal(false);
+  };
+  ////////////////////////////////////////////////////////////////
+  // Add Comic Book Modal
+
+  const handleAddComicModalOpen = () => {
+    setShowAddComicModal(true);
+  };
+  const handleCloseModal = () => {
+    setShowAddComicModal(false);
   };
 
   ////////////////////////////////////////////////////////////////
   // Delete Comic Book
 
   const handleDeleteComicBook = async (id) => {
-    const confirmDelete = window.confirm(
-      "Are you sure you want to delete this comic book?"
-    );
-
-    if (confirmDelete) {
       try {
         await axios.delete(`${URL}comicbooks/${id}/`);
         setComicBooks((prevComicBooks) =>
@@ -61,23 +67,27 @@ const ComicBookList = () => {
       } catch (error) {
         console.error("Error deleting comic book:", error);
       }
-    }
-  };
-  ////////////////////////////////////////////////////////////////
-  // Add Comic Book Modal
-
-  const handleOpenModal = () => {
-    setShowModal(true);
   };
 
-  // Close the modal
-  const handleCloseModal = () => {
-    setShowModal(false);
+////////////////////////////////////////////////////////////////
+// Delete Confirmation
+  const handleDeleteConfirmation = (id) => {
+    setComicToDelete(id);
+    setShowConfirmationModal(true);
   };
 
-  // const toggleModal = () => {
-  //   setShowModal((prevShowModal) => !prevShowModal)
-  // }
+  const handleConfirmDelete = () => {
+    handleDeleteComicBook(comicToDelete);
+    setShowConfirmationModal(false);
+  };
+
+  const handleCancelDelete = () => {
+    setComicToDelete(null);
+    setShowConfirmationModal(false);
+  };
+
+////////////////////////////////////////////////////////////////
+// Return
 
   return (
     <div>
@@ -86,19 +96,28 @@ const ComicBookList = () => {
         {comicBooks.map((comicBook) => (
           <li key={comicBook.id}>
             <Link to={`/comicbooks/${comicBook.id}`}>{comicBook.title}</Link>
-            <button onClick={() => handleDeleteComicBook(comicBook.id)}>
+            <button onClick={() => handleDeleteConfirmation(comicBook.id)}>
               Delete
             </button>
           </li>
         ))}
       </ul>
 
-      <button onClick={handleOpenModal}>Add New Comic Book</button>
-      {showModal && (
+      <button onClick={handleAddComicModalOpen}>Add New Comic Book</button>
+      {showAddComicModal && (
         <ComicBookAdd
           onComicBookAdded={handleComicBookAdded}
           onClose={handleCloseModal}
         />
+      )}
+       {showConfirmationModal && (
+        <div className="modal-overlay">
+        <div className="confirmation-modal" style={{backgroundColor: 'rgb(90,90,90,.7)'}}>
+          <p>Are you sure you want to delete this Comic Book?</p>
+          <button onClick={handleConfirmDelete}>Yes</button>
+          <button onClick={handleCancelDelete}>No</button>
+        </div>
+        </div>
       )}
 
     </div>

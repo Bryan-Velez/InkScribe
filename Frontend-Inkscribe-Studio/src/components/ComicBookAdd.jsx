@@ -46,6 +46,9 @@ const ComicBookAdd = ({ onComicBookAdded, onClose }) => {
     }
   }
 
+////////////////////////////////////////////////////////////////
+// Return
+
   return (
     <div className="modal-overlay" onClick={handleOutsideClick}>
       <div className="modal">

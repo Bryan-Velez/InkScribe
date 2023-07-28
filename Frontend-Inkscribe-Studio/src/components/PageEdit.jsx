@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import Loading from "./Loading";
+import PanelList from "./PanelList";
+
 
 const URL = import.meta.env.VITE_BASE_URL;
 
@@ -21,7 +24,18 @@ const PageEdit = () => {
     axios
       .get(`${URL}comicbooks/${parseInt(comicBookId)}/pages/${parseInt(id)}`)
       .then((response) => {
-        setPageData(response.data);
+        const { page_number, photo_url, description } = response.data;
+        if (page_number === null || isNaN(parseInt(page_number, 10))) {
+          setFormError("Page # must be a valid and unique number");
+          setLoading(false);
+          return;
+        }
+        setPageData({
+          page_number: page_number,
+          photo_url: photo_url || "",
+          description: description || "",
+          comic_book: comicBookId,
+        });
         setLoading(false);
       })
       .catch((error) => {
@@ -30,6 +44,21 @@ const PageEdit = () => {
       });
   }, [comicBookId, id]);
 
+////////////////////////////////////////////////////////////////
+// Loading Animation
+
+  if (loading) {
+    return <Loading />
+  }
+
+  if (loadError) {
+    return <div>Error: {loadError}</div>
+  }
+
+////////////////////////////////////////////////////////////////
+// Update Page Data
+  
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!pageData.page_number.trim()) {
@@ -48,16 +77,10 @@ const PageEdit = () => {
     } catch (error) {
       console.error("Error updating page:", error);
     }
-  };
-
-
-  if (loading) {
-    return <div>Loading...</div>;
   }
 
-  if (loadError) {
-    return <div>Error: {loadError}</div>;
-  }
+////////////////////////////////////////////////////////////////
+// Return
 
   return (
     <div className="page-edit">
@@ -102,4 +125,4 @@ const PageEdit = () => {
   );
 };
 
-export default PageEdit
+export default PageEdit;

@@ -33,7 +33,21 @@ const ComicBookEdit = () => {
       console.log()
   }, [id])
 
+
+  ////////////////////////////////////////////////////////////////
+  // Loading Animation
+
+  if (loading) {
+    return <Loading />
+  }
+
+  if (loadError) {
+    return <div>Error: {loadError}</div>
+  }
   
+////////////////////////////////////////////////////////////////
+// Update Comic Book Data
+
   const handleSubmit = async (event) => {
     event.preventDefault()
     if (!comicBookData.title.trim()) {
@@ -53,14 +67,8 @@ const ComicBookEdit = () => {
     }
   }
 
-  
-  if (loading) {
-    return <Loading />
-  }
-
-  if (loadError) {
-    return <div>Error: {loadError}</div>
-  }
+////////////////////////////////////////////////////////////////
+// Return
 
   return (
     <div className="comic-edit-page">
