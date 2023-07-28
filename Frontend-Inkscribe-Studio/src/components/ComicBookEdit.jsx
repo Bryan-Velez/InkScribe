@@ -1,54 +1,57 @@
-import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
-import axios from "axios";
-import Loading from "./Loading";
-import PageList from "./PageList";
+import React, { useState, useEffect } from "react"
+import { Link, useParams } from "react-router-dom"
+import axios from "axios"
+import Loading from "./Loading"
+import PageList from "./PageList"
 
-const URL = import.meta.env.VITE_BASE_URL;
+const URL = import.meta.env.VITE_BASE_URL
 
 const ComicBookEdit = () => {
-  const { id } = useParams();
+  const { id } = useParams()
   const [comicBookData, setComicBookData] = useState({
+    id: "", 
     title: "",
+    issue_number: "",
     photo_url: "",
     description: "",
-  });
-  const [loading, setLoading] = useState(true);
-  const [loadError, setLoadError] = useState(null);
-  const [formError, setFormError] = useState(null);
+  })
+  const [loading, setLoading] = useState(true)
+  const [loadError, setLoadError] = useState(null)
+  const [formError, setFormError] = useState(null)
 
   useEffect(() => {
     axios
       .get(`${URL}comicbooks/${id}/`)
       .then((response) => {
-        setComicBookData(response.data);
-        setLoading(false);
+        setComicBookData(response.data)
+        setLoading(false)
       })
       .catch((error) => {
-        setLoadError("Error fetching comic book data:", error);
-        setLoading(false);
-      });
-  }, [id]);
+        setLoadError("Error fetching comic book data:", error)
+        setLoading(false)
+      })
+      console.log()
+  }, [id])
 
   if (loading) {
-    return <Loading />;
+    return <Loading />
   }
 
   if (loadError) {
-    return <div>Error: {loadError}</div>;
+    return <div>Error: {loadError}</div>
   }
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault()
     if (!comicBookData.title.trim()) {
-      setFormError("Title field is required.");
+      setFormError("Title field is required.")
       return;
     }
     try {
-      await axios.put(`${URL}comicbooks/${id}/`, comicBookData);
+      await axios.put(`${URL}comicbooks/${id}/`, comicBookData)
       // window.location.href = `/comicbooks/${id}`;
     } catch (error) {
-      console.error("Error updating comic book:", error);
+      console.error("Error updating comic book:", error)
     }
   };
 
@@ -69,7 +72,17 @@ const ComicBookEdit = () => {
           />
         </label>
         <label>
-          Issue Cover:
+          Issue #:
+          <input
+            type="text"
+            value={comicBookData.issue_number || ""}
+            onChange={(e) =>
+              setComicBookData({ ...comicBookData, issue_number: e.target.value })
+            }
+          />
+        </label>
+        <label>
+          Issue Cover (URL):
           <input
             type="text"
             value={comicBookData.photo_url || ""}
@@ -78,9 +91,10 @@ const ComicBookEdit = () => {
             }
           />
         </label>
-        <label>
+        <label >
           Description:
-          <textarea
+          <textarea 
+            style={{width: '30vw'}}
             value={comicBookData.description || ""}
             onChange={(e) =>
               setComicBookData({
@@ -100,7 +114,7 @@ const ComicBookEdit = () => {
         </>
       )}
     </div>
-  );
+  )
 };
 
 export default ComicBookEdit;

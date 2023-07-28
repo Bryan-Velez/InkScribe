@@ -1,49 +1,51 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import axios from "axios";
-import Loading from "./Loading";
-import ComicBookAdd from "./ComicBookAdd";
+import axios from "axios"
+import Loading from "./Loading"
+import ComicBookAdd from "./ComicBookAdd"
 
-const URL = import.meta.env.VITE_BASE_URL;
+const URL = import.meta.env.VITE_BASE_URL
+
 console.log(`${URL}comicbooks/`)
 
 const ComicBookList = () => {
-  const [comicBooks, setComicBooks] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [loadError, setLoadError] = useState(null);
-  const [showModal, setShowModal] = useState(false);
+  const [comicBooks, setComicBooks] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [loadError, setLoadError] = useState(null)
+  const [showModal, setShowModal] = useState(false)
 
 
   useEffect(() => {
     axios
       .get(`${URL}comicbooks/`)
       .then((response) => {
-        setComicBooks(response.data);
-        setLoading(false);
+        setComicBooks(response.data)
+        setLoading(false)
       })
       .catch((error) => {
-        setLoadError("Error fetching comic books:", error);
-        setLoading(false);
-      });
-  }, []);
+        setLoadError("Error fetching comic books:", error)
+        setLoading(false)
+      })
+      console.log(comicBooks)
+  }, [])
 
 
 ////////////////////////////////////////////////////////////////
 // Loading screen  
 if (loading) {
-  return <Loading />;
+  return <Loading />
 }
 
 if (loadError) {
-  return <div>Error: {loadError}</div>;
+  return <div>Error: {loadError}</div>
 }
 ////////////////////////////////////////////////////////////////
 // Add Comic Book 
 const handleComicBookAdded = (newComicBook) => {
-    setComicBooks((prevComicBooks) => [...prevComicBooks, newComicBook]);
-    setShowModal(false); // Close the modal after comic book added
+    setComicBooks((prevComicBooks) => [...prevComicBooks, newComicBook])
+    setShowModal(false) 
 
-  };
+  }
   
   
   ////////////////////////////////////////////////////////////////
@@ -51,27 +53,27 @@ const handleComicBookAdded = (newComicBook) => {
   
   const handleDeleteComicBook = async (id) => {
     try {
-      await axios.delete(`${URL}comicbooks/${id}/`);
-      setComicBooks((prevComicBooks) => prevComicBooks.filter((comicBook) => comicBook.id !== id));
+      await axios.delete(`${URL}comicbooks/${id}/`)
+      setComicBooks((prevComicBooks) => prevComicBooks.filter((comicBook) => comicBook.id !== id))
     } catch (error) {
-      console.error("Error deleting comic book:", error);
+      console.error("Error deleting comic book:", error)
     }
-  };
+  }
   ////////////////////////////////////////////////////////////////
   // Add Comic Book Modal
 
   const handleOpenModal = () => {
-    setShowModal(true);
-  };
+    setShowModal(true)
+  }
 
   // Close the modal
   const handleCloseModal = () => {
-    setShowModal(false);
-  };
+    setShowModal(false)
+  }
 
   // const toggleModal = () => {
-  //   setShowModal((prevShowModal) => !prevShowModal);
-  // };
+  //   setShowModal((prevShowModal) => !prevShowModal)
+  // }
 
 
 
@@ -114,11 +116,22 @@ const handleComicBookAdded = (newComicBook) => {
       {/* <button onClick={toggleModal}>Add Comic Book</button>
       {showModal && <ComicBookAdd onComicBookAdded={handleComicBookAdded} onClose={toggleModal} />} */}
     </div>
-  );
-};
+  )
+}
 
 
-export default ComicBookList;
+export default ComicBookList
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -132,7 +145,7 @@ export default ComicBookList;
 //   // Comic book management logic here
 //   // ...
 
-//   const [comicBook, setComicBook] = useState([]);
+//   const [comicBook, setComicBook] = useState([])
 
 //   // Function to create a new comic book
 //   const createComicBook = () => {
@@ -140,27 +153,27 @@ export default ComicBookList;
 //     // You may want to set an initial cover page, title, or other metadata
 //     // For simplicity, we'll create an empty comic book with a single page
 //     const newComicBook = [{ id: 1, panels: [] }];
-//     setComicBook(newComicBook);
-//   };
+//     setComicBook(newComicBook)
+//   }
 
 //   // Function to add a new page to the comic book
 //   const addPage = () => {
 //     // Logic to add a new page to the comic book
-//     const newPage = { id: comicBook.length + 1, panels: [] };
-//     setComicBook(prevComicBook => [...prevComicBook, newPage]);
-//   };
+//     const newPage = { id: comicBook.length + 1, panels: [] }
+//     setComicBook(prevComicBook => [...prevComicBook, newPage])
+//   }
 
 //   // Function to delete a page from the comic book
 //   const deletePage = (pageId) => {
 //     // Logic to delete the specified page from the comic book
-//     setComicBook(prevComicBook => prevComicBook.filter(page => page.id !== pageId));
-//   };
+//     setComicBook(prevComicBook => prevComicBook.filter(page => page.id !== pageId))
+//   }
 
 //   return (
 //     <div>
 //       {/* Render comic book-related content here */}
 //     </div>
-//   );
-// };
+//   )
+// }
 
 // export default ComicBook;

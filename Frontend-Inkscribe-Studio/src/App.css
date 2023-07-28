@@ -14,6 +14,24 @@
 }
 
 /* //////////////////////////////////////////////////////////////// */
+/* Comic Edit Page */
+
+.comic-edit-page form {
+  padding: 20px;
+  font-weight: 800;
+  background-color: rgba(139, 133, 133, 0.637);
+  border: solid 2px #ff9564;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+
+}
+
+.comic-edit-page form input,textarea {
+  background-color: rgb(105, 105, 105);
+}
+
+/* //////////////////////////////////////////////////////////////// */
 /* Page Display */
 
 .page-scroll-container {
@@ -117,7 +135,6 @@
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  margin-bottom: 10px;
   width: 90%;
   background-color: rgb(92, 118, 144);
   align-self: center;
@@ -127,11 +144,10 @@
   padding: 8px 16px;
   background-color: #007bff;
   color: #fff;
-  border: none;
+  border: 1px solid rgb(158, 158, 158);
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  border: 1px solid rgb(158, 158, 158);
 }
 
 .modal button[type="submit"] {
@@ -156,7 +172,7 @@
 
 @media screen and (max-width: 1200px){
   .modal button[type="submit"] {
-    
+    width: 50%;
   }
 }
 

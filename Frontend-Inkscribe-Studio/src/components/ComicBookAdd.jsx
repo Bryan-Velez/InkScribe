@@ -5,7 +5,9 @@ const URL = import.meta.env.VITE_BASE_URL
 
 const ComicBookAdd = ({ onComicBookAdded, onClose }) => {
   const [newComicBookData, setNewComicBookData] = useState({
+    id: "",
     title: "",
+    issue_number: "",
     photo_url: "",
     description: "",
   })
@@ -16,7 +18,9 @@ const ComicBookAdd = ({ onComicBookAdded, onClose }) => {
       const response = await axios.post(`${URL}comicbooks/`, newComicBookData)
       onComicBookAdded(response.data)
       setNewComicBookData({
+        id: "",
         title: "",
+        issue_number: "",
         photo_url: "",
         description: "",
       })
@@ -55,7 +59,21 @@ const ComicBookAdd = ({ onComicBookAdded, onClose }) => {
           </label>
           <br />
           <label>
-            <p>Comic Book Cover (URL):</p>
+            <p>Issue #:</p>
+            <input
+              type="text"
+              value={newComicBookData.issue_number}
+              onChange={(e) =>
+                setNewComicBookData({
+                  ...newComicBookData,
+                  issue_number: e.target.value,
+                })
+              }
+            />
+          </label>
+          <br />
+          <label>
+            <p>Issue Cover (URL):</p>
             <input
               type="text"
               value={newComicBookData.photo_url}
