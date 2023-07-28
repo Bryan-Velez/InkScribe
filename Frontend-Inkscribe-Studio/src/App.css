@@ -136,7 +136,7 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   width: 90%;
-  background-color: rgb(92, 118, 144);
+  background-color: rgb(92, 118, 144) !important;
   align-self: center;
 }
 
@@ -167,8 +167,43 @@
 
 
 
+/* //////////////////////////////////////////////////////////////// */
+/* Confirmation Window */
+.confirmation-dialog {
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  max-width: 300px;
+  text-align: center;
+}
 
+.confirmation-dialog h3 {
+  margin-top: 0;
+}
 
+.confirmation-dialog p {
+  margin-bottom: 20px;
+}
+
+.confirmation-dialog button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.confirmation-dialog button.cancel-btn {
+  background-color: #ff0019;
+}
+
+/* //////////////////////////////////////////////////////////////// */
+/* Media Queries*/
 
 @media screen and (max-width: 1200px){
   .modal button[type="submit"] {

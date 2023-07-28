@@ -33,18 +33,16 @@ const ComicBookEdit = () => {
       console.log()
   }, [id])
 
-  if (loading) {
-    return <Loading />
-  }
-
-  if (loadError) {
-    return <div>Error: {loadError}</div>
-  }
-
+  
   const handleSubmit = async (event) => {
     event.preventDefault()
     if (!comicBookData.title.trim()) {
       setFormError("Title field is required.")
+      return;
+    }
+    const parsedIssueNumber = parseInt(comicBookData.issue_number, 10);
+    if (isNaN(parsedIssueNumber)) {
+      setFormError("Issue # must be a valid number");
       return;
     }
     try {
@@ -53,7 +51,16 @@ const ComicBookEdit = () => {
     } catch (error) {
       console.error("Error updating comic book:", error)
     }
-  };
+  }
+
+  
+  if (loading) {
+    return <Loading />
+  }
+
+  if (loadError) {
+    return <div>Error: {loadError}</div>
+  }
 
   return (
     <div className="comic-edit-page">

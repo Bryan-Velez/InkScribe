@@ -11,9 +11,19 @@ const ComicBookAdd = ({ onComicBookAdded, onClose }) => {
     photo_url: "",
     description: "",
   })
+  const [formError, setFormError] = useState(null)
 
   const handleSubmit = async (event) => {
     event.preventDefault()
+    if (!newComicBookData.title.trim()) {
+      setFormError("Title field is required");
+      return
+    }
+    const parsedIssueNumber = parseInt(newComicBookData.issue_number, 10);
+    if (isNaN(parsedIssueNumber)) {
+      setFormError("Issue # must be a valid number");
+      return;
+    }
     try {
       const response = await axios.post(`${URL}comicbooks/`, newComicBookData)
       onComicBookAdded(response.data)
@@ -44,6 +54,7 @@ const ComicBookAdd = ({ onComicBookAdded, onClose }) => {
                 </button>
         <h2>Add New Comic Book</h2>
         <form onSubmit={handleSubmit}>
+        {formError && <div>{formError}</div>}
           <label>
             <p>Title:</p>
             <input

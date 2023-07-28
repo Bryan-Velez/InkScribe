@@ -1,15 +1,29 @@
 import React, { useState } from "react"
 import axios from "axios"
 
+const URL = import.meta.env.VITE_BASE_URL
+
 const PageAdd = ({ comicBookId, onPageAdded, onClose }) => {
   const [newPageData, setNewPageData] = useState({
     page_number: "",
     photo_url: "",
     description: "",
+    comic_book: comicBookId,
   })
+  const [formError, setFormError] = useState(null)
+
 
   const handleSubmit = async (event) => {
     event.preventDefault()
+    if (!newPageData.page_number.trim()) {
+        setFormError("Page # field is required");
+        return
+      }
+      const parsedPageNumber = parseInt(newPageData.page_number, 10);
+      if (isNaN(parsedPageNumber)) {
+        setFormError("Page # must be a valid and unique number");
+        return;
+      }
     try {
       const response = await axios.post(
         `${URL}comicbooks/${comicBookId}/pages/`,
@@ -20,6 +34,7 @@ const PageAdd = ({ comicBookId, onPageAdded, onClose }) => {
         page_number: "",
         photo_url: "",
         description: "",
+        comic_book: comicBookId,
       })
       onClose()
     } catch (error) {
@@ -29,7 +44,7 @@ const PageAdd = ({ comicBookId, onPageAdded, onClose }) => {
 
   const handleModalClick = (event) => {
     event.stopPropagation();
-  };
+  }
 
   return (
     <div className="modal-overlay" onClick={onClose}>
@@ -39,8 +54,9 @@ const PageAdd = ({ comicBookId, onPageAdded, onClose }) => {
                 </button>
         <h2>Add New Page</h2>
     <form onSubmit={handleSubmit}>
+    {formError && <div>{formError}</div>}
       <label>
-       <p>Page Number:</p> 
+       <p>Page #:</p> 
         <input
           type="text"
           value={newPageData.page_number}
@@ -76,6 +92,6 @@ const PageAdd = ({ comicBookId, onPageAdded, onClose }) => {
     </div>
     </div>
   )
-};
+}
 
 export default PageAdd

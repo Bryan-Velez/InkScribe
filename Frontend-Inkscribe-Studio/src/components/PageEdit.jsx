@@ -1,57 +1,105 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
-const ComicPage = () => {
-  // Logic for managing comic pages, panels, and navigation
-  // ...
+const URL = import.meta.env.VITE_BASE_URL;
 
-  const [panels, setPanels] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
+const PageEdit = () => {
+  const { comicBookId, id } = useParams();
+  const [pageData, setPageData] = useState({
+    page_number: "",
+    photo_url: "",
+    description: "",
+    comic_book: comicBookId,
+  });
+  const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(null);
+  const [formError, setFormError] = useState(null)
 
-  // Function to add a new panel to the current page
-  const addPanel = () => {
-    // Logic to add a new panel to the current page
-    // You may want to specify the panel's dimensions, initial drawings, and speech bubbles
-    // For simplicity, we'll just add an empty panel for now
-    const newPanel = { id: panels.length + 1, drawings: [], speechBubbles: [] };
-    setPanels(prevPanels => [...prevPanels, newPanel]);
-  };
 
-  // Function to delete a panel from the current page
-  const deletePanel = (panelId) => {
-    // Logic to delete the specified panel from the current page
-    setPanels(prevPanels => prevPanels.filter(panel => panel.id !== panelId));
-  };
+  useEffect(() => {
+    axios
+      .get(`${URL}comicbooks/${parseInt(comicBookId)}/pages/${parseInt(id)}`)
+      .then((response) => {
+        setPageData(response.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setLoadError("Error fetching page data:", error);
+        setLoading(false);
+      });
+  }, [comicBookId, id]);
 
-  // Function to navigate to the previous page
-  const goToPreviousPage = () => {
-    // Logic to navigate to the previous page
-    if (currentPage > 1) {
-      setCurrentPage(prevPage => prevPage - 1);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (!pageData.page_number.trim()) {
+        setFormError("Page # field is required");
+        return
+      }
+      const parsedPageNumber = parseInt(pageData.page_number, 10);
+      if (isNaN(parsedPageNumber)) {
+        setFormError("Page # must be a valid and unique number");
+        return;
+      }
+    try {
+      await axios.put(`${URL}pages/${id}`, pageData);
+      // Optionally, you can redirect to the page details after editing
+      // window.location.href = `/pages/${id}`;
+    } catch (error) {
+      console.error("Error updating page:", error);
     }
   };
 
-  // Function to navigate to the next page
-  const goToNextPage = () => {
-    // Logic to navigate to the next page
-    setCurrentPage(prevPage => prevPage + 1);
-  };
 
-  // Render comic panels on the current page
-  const renderComicPanels = () => {
-    return panels.map(panel => (
-      <ComicPanel
-        key={panel.id}
-        panel={panel}
-        onDelete={() => deletePanel(panel.id)}
-      />
-    ));
-  };
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (loadError) {
+    return <div>Error: {loadError}</div>;
+  }
 
   return (
-    <div>
-      {/* Render comic page content here */}
+    <div className="page-edit">
+      <h2>Edit Page</h2>
+      <form onSubmit={handleSubmit}>
+      {formError && <div>{formError}</div>}
+        <label>
+          <p>Page Number:</p>
+          <input
+            type="text"
+            value={pageData.page_number}
+            onChange={(e) =>
+              setPageData({ ...pageData, page_number: e.target.value })
+            }
+          />
+        </label>
+        <br />
+        <label>
+          <p>Image (URL):</p>
+          <input
+            type="text"
+            value={pageData.photo_url}
+            onChange={(e) =>
+              setPageData({ ...pageData, photo_url: e.target.value })
+            }
+          />
+        </label>
+        <br />
+        <label>
+          <p>Description:</p>
+          <textarea
+            value={pageData.description}
+            onChange={(e) =>
+              setPageData({ ...pageData, description: e.target.value })
+            }
+          />
+        </label>
+        <br />
+        <button type="submit">Save Changes</button>
+      </form>
     </div>
   );
 };
 
-export default ComicPage;
+export default PageEdit

@@ -1,82 +1,83 @@
-import React, { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
-import axios from "axios"
-import Loading from "./Loading"
-import ComicBookAdd from "./ComicBookAdd"
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import Loading from "./Loading";
+import ComicBookAdd from "./ComicBookAdd";
 
-const URL = import.meta.env.VITE_BASE_URL
 
-console.log(`${URL}comicbooks/`)
+const URL = import.meta.env.VITE_BASE_URL;
+
+console.log(`${URL}comicbooks/`);
 
 const ComicBookList = () => {
-  const [comicBooks, setComicBooks] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [loadError, setLoadError] = useState(null)
-  const [showModal, setShowModal] = useState(false)
-
+  const [comicBooks, setComicBooks] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     axios
       .get(`${URL}comicbooks/`)
       .then((response) => {
-        setComicBooks(response.data)
-        setLoading(false)
+        setComicBooks(response.data);
+        setLoading(false);
       })
       .catch((error) => {
-        setLoadError("Error fetching comic books:", error)
-        setLoading(false)
-      })
-      console.log(comicBooks)
-  }, [])
+        setLoadError("Error fetching comic books:", error);
+        setLoading(false);
+      });
+  }, []);
 
-
-////////////////////////////////////////////////////////////////
-// Loading screen  
-if (loading) {
-  return <Loading />
-}
-
-if (loadError) {
-  return <div>Error: {loadError}</div>
-}
-////////////////////////////////////////////////////////////////
-// Add Comic Book 
-const handleComicBookAdded = (newComicBook) => {
-    setComicBooks((prevComicBooks) => [...prevComicBooks, newComicBook])
-    setShowModal(false) 
-
+  ////////////////////////////////////////////////////////////////
+  // Loading screen
+  if (loading) {
+    return <Loading />;
   }
-  
-  
+
+  if (loadError) {
+    return <div>Error: {loadError}</div>;
+  }
+  ////////////////////////////////////////////////////////////////
+  // Add Comic Book
+  const handleComicBookAdded = (newComicBook) => {
+    setComicBooks((prevComicBooks) => [...prevComicBooks, newComicBook]);
+    setShowModal(false);
+  };
+
   ////////////////////////////////////////////////////////////////
   // Delete Comic Book
-  
+
   const handleDeleteComicBook = async (id) => {
-    try {
-      await axios.delete(`${URL}comicbooks/${id}/`)
-      setComicBooks((prevComicBooks) => prevComicBooks.filter((comicBook) => comicBook.id !== id))
-    } catch (error) {
-      console.error("Error deleting comic book:", error)
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this comic book?"
+    );
+
+    if (confirmDelete) {
+      try {
+        await axios.delete(`${URL}comicbooks/${id}/`);
+        setComicBooks((prevComicBooks) =>
+          prevComicBooks.filter((comicBook) => comicBook.id !== id)
+        );
+      } catch (error) {
+        console.error("Error deleting comic book:", error);
+      }
     }
-  }
+  };
   ////////////////////////////////////////////////////////////////
   // Add Comic Book Modal
 
   const handleOpenModal = () => {
-    setShowModal(true)
-  }
+    setShowModal(true);
+  };
 
   // Close the modal
   const handleCloseModal = () => {
-    setShowModal(false)
-  }
+    setShowModal(false);
+  };
 
   // const toggleModal = () => {
   //   setShowModal((prevShowModal) => !prevShowModal)
   // }
-
-
-
 
   return (
     <div>
@@ -84,24 +85,13 @@ const handleComicBookAdded = (newComicBook) => {
       <ul>
         {comicBooks.map((comicBook) => (
           <li key={comicBook.id}>
-             <Link to={`/edit/${comicBook.id}`}>{comicBook.title}</Link>
-            <button onClick={() => handleDeleteComicBook(comicBook.id)}>Delete</button>
+            <Link to={`/comicbooks/${comicBook.id}`}>{comicBook.title}</Link>
+            <button onClick={() => handleDeleteComicBook(comicBook.id)}>
+              Delete
+            </button>
           </li>
         ))}
       </ul>
-
-
-
-      {/* <button onClick={() => setShowModal(true)}>Add New Comic Book</button> */}
-{/* Modal */}
-{/* {showModal && (
-  <div className="modal-overlay">
-    <div className="modal">
-      <ComicBookAdd onComicBookAdded={handleComicBookAdded} />
-      <button className="close" onClick={() => setShowModal(false)}>&times;</button>
-    </div>
-  </div>
-)} */}
 
       <button onClick={handleOpenModal}>Add New Comic Book</button>
       {showModal && (
@@ -111,22 +101,11 @@ const handleComicBookAdded = (newComicBook) => {
         />
       )}
 
-
-
-      {/* <button onClick={toggleModal}>Add Comic Book</button>
-      {showModal && <ComicBookAdd onComicBookAdded={handleComicBookAdded} onClose={toggleModal} />} */}
     </div>
-  )
-}
-
+  );
+};
 
 export default ComicBookList
-
-
-
-
-
-
 
 
 
