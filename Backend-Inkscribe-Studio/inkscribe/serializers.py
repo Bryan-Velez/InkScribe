@@ -25,8 +25,7 @@ class PanelSerializer(serializers.ModelSerializer):
     speech_bubbles = SpeechBubbleSerializer(many=True, read_only=True)
     page = serializers.SlugRelatedField(
         slug_field='page_number', queryset=Page.objects.all()
-    )
-      
+    ) 
     class Meta:
         model = Panel
         fields = '__all__'

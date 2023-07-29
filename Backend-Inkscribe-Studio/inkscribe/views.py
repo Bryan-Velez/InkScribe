@@ -1,6 +1,7 @@
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, get_object_or_404
-from rest_framework import generics
+from rest_framework import generics, serializers
+from rest_framework.response import Response
 from .serializers import *
 from .models import *
 # Create your views here.
@@ -68,8 +69,6 @@ class PanelDetail(generics.RetrieveUpdateDestroyAPIView):
         )
         self.check_object_permissions(self.request, obj)
         return obj
-
-
 
 
 class SpeechBubbleList(generics.ListCreateAPIView):
