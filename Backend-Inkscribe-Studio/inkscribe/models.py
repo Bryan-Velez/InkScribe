@@ -47,7 +47,8 @@ class Page(models.Model):
 class Panel(models.Model):
     page = models.ForeignKey(Page, on_delete=models.CASCADE, related_name='panels')
     panel_number = models.IntegerField()
-
+    height = models.PositiveIntegerField(blank=True, null=True)
+    width = models.PositiveIntegerField(blank=True, null=True)
     x = models.IntegerField()
     y = models.IntegerField()
     photo_url = models.TextField(blank=True, null=True)
@@ -63,8 +64,6 @@ class Panel(models.Model):
 class SpeechBubble(models.Model):
     panel = models.ForeignKey(Panel, on_delete=models.CASCADE, related_name='speech_bubbles')
     bubble_number = models.IntegerField(blank=True, null=True)
-    height = models.PositiveIntegerField(blank=True, null=True)
-    width = models.PositiveIntegerField(blank=True, null=True)
     x = models.IntegerField()
     y = models.IntegerField()
     text = models.TextField()
