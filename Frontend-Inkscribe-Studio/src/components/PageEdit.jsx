@@ -10,6 +10,7 @@ const URL = import.meta.env.VITE_BASE_URL;
 const PageEdit = () => {
   const { comicBookId, id } = useParams();
   const [pageData, setPageData] = useState({
+    panels: [],
     page_number: "",
     photo_url: "",
     description: "",
@@ -18,7 +19,7 @@ const PageEdit = () => {
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState(null);
   const [formError, setFormError] = useState(null);
-  const [selectedPanel, setSelectedPanel] = useState(null);
+  // const [selectedPanel, setSelectedPanel] = useState(null);
 
 
   useEffect(() => {
@@ -32,6 +33,7 @@ const PageEdit = () => {
           return;
         }
         setPageData({
+          panels: [],
           page_number: page_number,
           photo_url: photo_url || "",
           description: description || "",
@@ -69,11 +71,11 @@ const PageEdit = () => {
   };
 
 
-  const handlePanelSelect = (panelId) => {
-    // Find the selected panel data from the list of panels
-    const selectedPanelData = pageData.panels.find((panel) => panel.id === panelId);
-    setSelectedPanel(selectedPanelData);
-  };
+  // const handlePanelSelect = (panelId) => {
+  //   // Find the selected panel data from the list of panels
+  //   const selectedPanelData = pageData.panels.find((panel) => panel.id === panelId);
+  //   setSelectedPanel(selectedPanelData);
+  // };
 
   ////////////////////////////////////////////////////////////////
   // Loading Animation
@@ -130,18 +132,19 @@ const PageEdit = () => {
       </form>
       <h2>Panel List</h2>
       {/* Render the PanelList component */}
-      <PanelList comicBookId={comicBookId} pageId={id} onPanelSelect={handlePanelSelect} />
+      <PanelList comicBookId={comicBookId} pageId={pageData.page_number} panels={pageData.panels} />
       <h2>Edit Panels</h2>
       {/* Render the PanelEdit component */}
       {/* Pass the comicBookId, id, and panelId to identify the specific panel to edit */}
       {/* pageData.panels && */}
-      {selectedPanel && (
+
+      {/* {selectedPanel && ( */}
         <PanelEdit
           comicBookId={comicBookId}
-          pageId={id}
-          panelId={selectedPanel.id} // Replace with the specific panel ID to edit
+          pageId={pageData.page_number}
+          // panelId={pageData.panels.panel_number}
         />
-      )}
+      {/* )} */}
     </div>
   );
 };

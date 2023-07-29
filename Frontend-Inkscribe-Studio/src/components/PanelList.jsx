@@ -7,7 +7,6 @@ import Loading from "./Loading";
 const URL = import.meta.env.VITE_BASE_URL;
 
 const PanelList = ({ comicBookId, pageId }) => {
-    // const { comicBookId, pageId } = useParams();
     const[panels, setPanels] = useState([])
     const [loading, setLoading] = useState(true);
     const [loadError, setLoadError] = useState(null);
@@ -16,6 +15,7 @@ const PanelList = ({ comicBookId, pageId }) => {
         axios
           .get(`${URL}comicbooks/${comicBookId}/pages/${pageId}/panels/`)
           .then((response) => {
+            console.log(pageId, response.data);
             setPanels(response.data);
             setLoading(false);
           })
@@ -39,7 +39,7 @@ const PanelList = ({ comicBookId, pageId }) => {
   return (
     <div className="panel-list">
       {panels.map((panel) => (
-        <Link key={panel.id} to={`/panels/${panel.id}`}>
+        <Link key={panel.id} to={`/comicbooks/${comicBookId}/pages/${pageId}/panels/${panel.panel_number}`}>
         <div key={panel.id} className="panel-card" style={{backgroundColor:'grey'}}>
           <img src={panel.photo_url} alt='' />
           <h3>{`Panel ${panel.panel_number}`}</h3>

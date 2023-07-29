@@ -40,7 +40,7 @@ class Page(models.Model):
         unique_together = ('comic_book', 'page_number')
 
     def __str__(self):
-        return f"Page {self.page_number} of {self.comic_book.title}"
+        return f"Page # {self.page_number} of {self.comic_book.title}"
 
 
 
@@ -57,7 +57,7 @@ class Panel(models.Model):
         unique_together = ('page', 'panel_number')
 
     def __str__(self):
-        return f"Panel {self.panel_number} of {self.page.page_number} in {self.page.comic_book.title}"
+        return f"Panel # {self.panel_number} of Page # {self.page.page_number} in {self.page.comic_book.title}"
 
 
 
@@ -72,7 +72,7 @@ class SpeechBubble(models.Model):
         unique_together = ('panel', 'bubble_number')
 
     def __str__(self):
-        return f"Speech Bubble {self.bubble_number} in Panel {self.panel.panel_number} of Page {self.panel.page.page_number} in {self.panel.page.comic_book.title}"
+        return f"Speech Bubble {self.bubble_number} in Panel # {self.panel.panel_number} of Page # {self.panel.page.page_number} in {self.panel.page.comic_book.title}"
     
 
     
@@ -82,4 +82,4 @@ class Drawing(models.Model):
     path = models.JSONField()  
 
     def __str__(self):
-        return f"Drawing {self} in Panel {self.panel}"
+        return f"Drawing {self} in Panel # {self.panel.panel_number} of Page # {self.panel.page.page_number} in {self.panel.page.comic_book.title}"

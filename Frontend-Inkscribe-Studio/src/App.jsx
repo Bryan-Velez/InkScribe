@@ -22,8 +22,8 @@ const App = () => {
         <Route path="/comicbooks/:id" element={<ComicBookEdit/>}/>
         <Route path="/comicbooks/:comicBookId/pages" element={<PageList/>}/>
         <Route path="/comicbooks/:comicBookId/pages/:id" element={<PageEdit/>}/>
-        <Route path="/comicbooks/:comicBookId/pages/:id/panels" element={<PanelList/>}/>
-        <Route path="/comicbooks/:comicBookId/pages/:id/panels/:id" element={<PanelEdit/>}/>
+        <Route path="/comicbooks/:comicBookId/pages/:pageId/panels" element={<PanelList/>}/>
+        <Route path="/comicbooks/:comicBookId/pages/:pageId/panels/:id" element={<PanelEdit/>}/>
         <Route path="/paneldesign" element={<PanelDesign />}/>
       </Routes>
     </div>
