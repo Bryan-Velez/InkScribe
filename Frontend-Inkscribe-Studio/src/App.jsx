@@ -5,6 +5,8 @@ import ComicBookList from "./components/ComicBookList";
 import ComicBookEdit from "./components/ComicBookEdit";
 import PageList from "./components/PageList";
 import PageEdit from "./components/PageEdit";
+import PanelList from "./components/PanelList";
+import PanelEdit from "./components/PanelEdit";
 import PanelDesign from "./components/PanelDesign";
 import Nav from "./components/Nav";
 import './App.css'
@@ -20,6 +22,8 @@ const App = () => {
         <Route path="/comicbooks/:id" element={<ComicBookEdit/>}/>
         <Route path="/comicbooks/:comicBookId/pages" element={<PageList/>}/>
         <Route path="/comicbooks/:comicBookId/pages/:id" element={<PageEdit/>}/>
+        <Route path="/comicbooks/:comicBookId/pages/:id/panels" element={<PanelList/>}/>
+        <Route path="/comicbooks/:comicBookId/pages/:id/panels/:id" element={<PanelEdit/>}/>
         <Route path="/paneldesign" element={<PanelDesign />}/>
       </Routes>
     </div>

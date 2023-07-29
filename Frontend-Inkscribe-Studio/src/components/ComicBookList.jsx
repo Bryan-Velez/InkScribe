@@ -1,94 +1,96 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import Loading from "./Loading";
-import ComicBookAdd from "./ComicBookAdd";
+import React, { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
+import axios from "axios"
+import Loading from "./Loading"
+import ComicBookAdd from "./ComicBookAdd"
 
 
 const URL = import.meta.env.VITE_BASE_URL;
 
-console.log(`${URL}comicbooks/`);
+console.log(`${URL}comicbooks/`)
 
 const ComicBookList = () => {
-  const [comicBooks, setComicBooks] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [loadError, setLoadError] = useState(null);
-  const [showAddComicModal, setShowAddComicModal] = useState(false);
-  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
-  const [comicToDelete, setComicToDelete] = useState(null);
+  const [comicBooks, setComicBooks] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [loadError, setLoadError] = useState(null)
+  const [showAddComicModal, setShowAddComicModal] = useState(false)
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false)
+  const [comicToDelete, setComicToDelete] = useState(null)
 
   useEffect(() => {
     axios
       .get(`${URL}comicbooks/`)
       .then((response) => {
-        setComicBooks(response.data);
-        setLoading(false);
+        setComicBooks(response.data)
+        setLoading(false)
       })
       .catch((error) => {
-        setLoadError("Error fetching comic books:", error);
-        setLoading(false);
-      });
-  }, []);
+        setLoadError("Error fetching comic books:", error)
+        setLoading(false)
+      })
+  }, [])
 
-  ////////////////////////////////////////////////////////////////
-  // Loading Animation
-  if (loading) {
-    return <Loading />;
-  }
-
-  if (loadError) {
-    return <div>Error: {loadError}</div>;
-  }
   ////////////////////////////////////////////////////////////////
   // Add Comic Book
   const handleComicBookAdded = (newComicBook) => {
-    setComicBooks((prevComicBooks) => [...prevComicBooks, newComicBook]);
-    setShowAddComicModal(false);
+    setComicBooks((prevComicBooks) => [...prevComicBooks, newComicBook])
+    setShowAddComicModal(false)
   };
   ////////////////////////////////////////////////////////////////
   // Add Comic Book Modal
-
+  
   const handleAddComicModalOpen = () => {
-    setShowAddComicModal(true);
+    setShowAddComicModal(true)
   };
   const handleCloseModal = () => {
-    setShowAddComicModal(false);
+    setShowAddComicModal(false)
+  };
+  
+  ////////////////////////////////////////////////////////////////
+  // Delete Comic Book
+  
+  const handleDeleteComicBook = async (id) => {
+    try {
+      await axios.delete(`${URL}comicbooks/${id}/`)
+      setComicBooks((prevComicBooks) =>
+      prevComicBooks.filter((comicBook) => comicBook.id !== id)
+      )
+    } catch (error) {
+      console.error("Error deleting comic book:", error)
+    }
+  };
+  
+  ////////////////////////////////////////////////////////////////
+  // Delete Confirmation
+  const handleDeleteConfirmation = (id) => {
+    setComicToDelete(id)
+    setShowConfirmationModal(true)
+  };
+  
+  const handleConfirmDelete = () => {
+    handleDeleteComicBook(comicToDelete)
+    setShowConfirmationModal(false)
+  };
+  
+  const handleCancelDelete = () => {
+    setComicToDelete(null)
+    setShowConfirmationModal(false)
   };
 
   ////////////////////////////////////////////////////////////////
-  // Delete Comic Book
-
-  const handleDeleteComicBook = async (id) => {
-      try {
-        await axios.delete(`${URL}comicbooks/${id}/`);
-        setComicBooks((prevComicBooks) =>
-          prevComicBooks.filter((comicBook) => comicBook.id !== id)
-        );
-      } catch (error) {
-        console.error("Error deleting comic book:", error);
-      }
-  };
-
-////////////////////////////////////////////////////////////////
-// Delete Confirmation
-  const handleDeleteConfirmation = (id) => {
-    setComicToDelete(id);
-    setShowConfirmationModal(true);
-  };
-
-  const handleConfirmDelete = () => {
-    handleDeleteComicBook(comicToDelete);
-    setShowConfirmationModal(false);
-  };
-
-  const handleCancelDelete = () => {
-    setComicToDelete(null);
-    setShowConfirmationModal(false);
-  };
-
-////////////////////////////////////////////////////////////////
-// Return
-
+  // Loading Animation
+  
+    if (loading) {
+      return <Loading />;
+    }
+  
+    if (loadError) {
+      return <div>Error: {loadError}</div>;
+    }
+  
+  ////////////////////////////////////////////////////////////////
+  // Return
+  
   return (
     <div>
       <h1>Comic Books</h1>
@@ -121,7 +123,7 @@ const ComicBookList = () => {
       )}
 
     </div>
-  );
+  )
 };
 
 export default ComicBookList

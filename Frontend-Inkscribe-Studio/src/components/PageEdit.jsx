@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Loading from "./Loading";
 import PanelList from "./PanelList";
-
+import PanelEdit from "./PanelEdit";
 
 const URL = import.meta.env.VITE_BASE_URL;
 
@@ -17,7 +17,8 @@ const PageEdit = () => {
   });
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState(null);
-  const [formError, setFormError] = useState(null)
+  const [formError, setFormError] = useState(null);
+  const [selectedPanel, setSelectedPanel] = useState(null);
 
 
   useEffect(() => {
@@ -44,32 +45,20 @@ const PageEdit = () => {
       });
   }, [comicBookId, id]);
 
-////////////////////////////////////////////////////////////////
-// Loading Animation
+  ////////////////////////////////////////////////////////////////
+  // Update Page Data
 
-  if (loading) {
-    return <Loading />
-  }
-
-  if (loadError) {
-    return <div>Error: {loadError}</div>
-  }
-
-////////////////////////////////////////////////////////////////
-// Update Page Data
-  
-  
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!pageData.page_number.trim()) {
-        setFormError("Page # field is required");
-        return
-      }
-      const parsedPageNumber = parseInt(pageData.page_number, 10);
-      if (isNaN(parsedPageNumber)) {
-        setFormError("Page # must be a valid and unique number");
-        return;
-      }
+      setFormError("Page # field is required");
+      return;
+    }
+    const parsedPageNumber = parseInt(pageData.page_number, 10);
+    if (isNaN(parsedPageNumber)) {
+      setFormError("Page # must be a valid and unique number");
+      return;
+    }
     try {
       await axios.put(`${URL}pages/${id}`, pageData);
       // Optionally, you can redirect to the page details after editing
@@ -77,16 +66,34 @@ const PageEdit = () => {
     } catch (error) {
       console.error("Error updating page:", error);
     }
+  };
+
+
+  const handlePanelSelect = (panelId) => {
+    // Find the selected panel data from the list of panels
+    const selectedPanelData = pageData.panels.find((panel) => panel.id === panelId);
+    setSelectedPanel(selectedPanelData);
+  };
+
+  ////////////////////////////////////////////////////////////////
+  // Loading Animation
+
+  if (loading) {
+    return <Loading />;
   }
 
-////////////////////////////////////////////////////////////////
-// Return
+  if (loadError) {
+    return <div>Error: {loadError}</div>;
+  }
+
+  ////////////////////////////////////////////////////////////////
+  // Return
 
   return (
     <div className="page-edit">
       <h2>Edit Page</h2>
       <form onSubmit={handleSubmit}>
-      {formError && <div>{formError}</div>}
+        {formError && <div>{formError}</div>}
         <label>
           <p>Page Number:</p>
           <input
@@ -121,6 +128,20 @@ const PageEdit = () => {
         <br />
         <button type="submit">Save Changes</button>
       </form>
+      <h2>Panel List</h2>
+      {/* Render the PanelList component */}
+      <PanelList comicBookId={comicBookId} pageId={id} onPanelSelect={handlePanelSelect} />
+      <h2>Edit Panels</h2>
+      {/* Render the PanelEdit component */}
+      {/* Pass the comicBookId, id, and panelId to identify the specific panel to edit */}
+      {/* pageData.panels && */}
+      {selectedPanel && (
+        <PanelEdit
+          comicBookId={comicBookId}
+          pageId={id}
+          panelId={selectedPanel.id} // Replace with the specific panel ID to edit
+        />
+      )}
     </div>
   );
 };

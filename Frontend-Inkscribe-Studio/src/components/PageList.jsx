@@ -4,7 +4,6 @@ import { Link, useParams } from "react-router-dom";
 import Loading from "./Loading";
 import PageAdd from "./PageAdd";
 
-
 // const URL = import.meta.env.VITE_BASE_URL;
 
 const PageList = ({ URL, comicBookId }) => {
@@ -29,22 +28,13 @@ const PageList = ({ URL, comicBookId }) => {
   }, [URL, comicBookId]);
 
   ////////////////////////////////////////////////////////////////
-  // Loading Animation
-  if (loading) {
-    return <Loading />;
-  }
-
-  if (loadError) {
-    return <div>Error: {loadError}</div>;
-  }
-  ////////////////////////////////////////////////////////////////
   // Add Page
   const handlePageAdded = (newPage) => {
     setPages((prevPages) => [...prevPages, newPage]);
-    setShowAddPageModal(false)
+    setShowAddPageModal(false);
   };
-////////////////////////////////////////////////////////////////
-// Add Page Modal
+  ////////////////////////////////////////////////////////////////
+  // Add Page Modal
   const handleAddPageModalOpen = () => {
     setShowAddPageModal(true);
   };
@@ -66,10 +56,10 @@ const PageList = ({ URL, comicBookId }) => {
     } catch (error) {
       console.error("Error deleting page:", error);
     }
-  }
+  };
 
-////////////////////////////////////////////////////////////////
-// Delete Confirmation
+  ////////////////////////////////////////////////////////////////
+  // Delete Confirmation
 
   const handleDeleteConfirmation = (event, id) => {
     event.preventDefault();
@@ -87,8 +77,19 @@ const PageList = ({ URL, comicBookId }) => {
     setShowConfirmationModal(false);
   };
 
-////////////////////////////////////////////////////////////////
-// Return
+  ////////////////////////////////////////////////////////////////
+  // Loading Animation
+
+  if (loading) {
+    return <Loading />;
+  }
+
+  if (loadError) {
+    return <div>Error: {loadError}</div>;
+  }
+
+  ////////////////////////////////////////////////////////////////
+  // Return
 
   return (
     <div className="page-scroll-container">
@@ -99,10 +100,12 @@ const PageList = ({ URL, comicBookId }) => {
             key={page.id}
           >
             <div className="page-card">
-              <img src={page.photo_url} alt='' />
+              <img src={page.photo_url} alt="" />
               <h3>{page.page_number}</h3>
               <p>{page.description}</p>
-              <button onClick={(event) => handleDeleteConfirmation(event, page.id)}>
+              <button
+                onClick={(event) => handleDeleteConfirmation(event, page.id)}
+              >
                 Delete
               </button>
             </div>
@@ -119,12 +122,15 @@ const PageList = ({ URL, comicBookId }) => {
         />
       )}
       {showConfirmationModal && (
-          <div className="modal-overlay">
-        <div className="confirmation-modal" style={{backgroundColor: 'rgb(90,90,90,.7)'}}>
-          <p>Are you sure you want to delete this page?</p>
-          <button onClick={handleConfirmDelete}>Yes</button>
-          <button onClick={handleCancelDelete}>No</button>
-        </div>
+        <div className="modal-overlay">
+          <div
+            className="confirmation-modal"
+            style={{ backgroundColor: "rgb(90,90,90,.7)" }}
+          >
+            <p>Are you sure you want to delete this page?</p>
+            <button onClick={handleConfirmDelete}>Yes</button>
+            <button onClick={handleCancelDelete}>No</button>
+          </div>
         </div>
       )}
     </div>

@@ -1,57 +1,45 @@
-import React, { useState, useEffect } from "react"
-import { Link, useParams } from "react-router-dom"
-import axios from "axios"
-import Loading from "./Loading"
-import PageList from "./PageList"
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
+import axios from "axios";
+import Loading from "./Loading";
+import PageList from "./PageList";
 
-const URL = import.meta.env.VITE_BASE_URL
+const URL = import.meta.env.VITE_BASE_URL;
 
 const ComicBookEdit = () => {
-  const { id } = useParams()
+  const { id } = useParams();
   const [comicBookData, setComicBookData] = useState({
-    id: "", 
+    id: "",
     title: "",
     issue_number: "",
     photo_url: "",
     description: "",
-  })
-  const [loading, setLoading] = useState(true)
-  const [loadError, setLoadError] = useState(null)
-  const [formError, setFormError] = useState(null)
+  });
+  const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(null);
+  const [formError, setFormError] = useState(null);
 
   useEffect(() => {
     axios
       .get(`${URL}comicbooks/${id}/`)
       .then((response) => {
-        setComicBookData(response.data)
-        setLoading(false)
+        setComicBookData(response.data);
+        setLoading(false);
       })
       .catch((error) => {
-        setLoadError("Error fetching comic book data:", error)
-        setLoading(false)
-      })
-      console.log()
-  }, [id])
-
+        setLoadError("Error fetching comic book data:", error);
+        setLoading(false);
+      });
+    console.log();
+  }, [id]);
 
   ////////////////////////////////////////////////////////////////
-  // Loading Animation
-
-  if (loading) {
-    return <Loading />
-  }
-
-  if (loadError) {
-    return <div>Error: {loadError}</div>
-  }
-  
-////////////////////////////////////////////////////////////////
-// Update Comic Book Data
+  // Update Comic Book Data
 
   const handleSubmit = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
     if (!comicBookData.title.trim()) {
-      setFormError("Title field is required.")
+      setFormError("Title field is required.");
       return;
     }
     const parsedIssueNumber = parseInt(comicBookData.issue_number, 10);
@@ -60,22 +48,33 @@ const ComicBookEdit = () => {
       return;
     }
     try {
-      await axios.put(`${URL}comicbooks/${id}/`, comicBookData)
+      await axios.put(`${URL}comicbooks/${id}/`, comicBookData);
       // window.location.href = `/comicbooks/${id}`;
     } catch (error) {
-      console.error("Error updating comic book:", error)
+      console.error("Error updating comic book:", error);
     }
+  };
+
+  ////////////////////////////////////////////////////////////////
+  // Loading Animation
+
+  if (loading) {
+    return <Loading />;
   }
 
-////////////////////////////////////////////////////////////////
-// Return
+  if (loadError) {
+    return <div>Error: {loadError}</div>;
+  }
+
+  ////////////////////////////////////////////////////////////////
+  // Return
 
   return (
     <div className="comic-edit-page">
       <h1>Edit Comic Book</h1>
       <h3>{comicBookData.title}</h3>
       <form onSubmit={handleSubmit}>
-      {formError && <div>{formError}</div>}
+        {formError && <div>{formError}</div>}
         <label>
           Title:
           <input
@@ -92,7 +91,10 @@ const ComicBookEdit = () => {
             type="text"
             value={comicBookData.issue_number || ""}
             onChange={(e) =>
-              setComicBookData({ ...comicBookData, issue_number: e.target.value })
+              setComicBookData({
+                ...comicBookData,
+                issue_number: e.target.value,
+              })
             }
           />
         </label>
@@ -106,10 +108,10 @@ const ComicBookEdit = () => {
             }
           />
         </label>
-        <label >
+        <label>
           Description:
-          <textarea 
-            style={{width: '30vw'}}
+          <textarea
+            style={{ width: "30vw" }}
             value={comicBookData.description || ""}
             onChange={(e) =>
               setComicBookData({
@@ -125,11 +127,11 @@ const ComicBookEdit = () => {
       {comicBookData.id && (
         <>
           <h1>Pages</h1>
-          <PageList URL={URL} comicBookId={comicBookData.id}/>
+          <PageList URL={URL} comicBookId={comicBookData.id} />
         </>
       )}
     </div>
-  )
+  );
 };
 
 export default ComicBookEdit;
