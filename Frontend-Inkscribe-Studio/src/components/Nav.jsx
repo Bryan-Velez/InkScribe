@@ -1,13 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Nav = () => {
+const div = () => {
   return (
-    <nav>
-      <Link to="/">Home</Link>
-      <Link to="/comicbooks">Comic Books</Link>
-    </nav>
+    <div className="header">
+      <h1>InkScribe Studio</h1>
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/comicbooks">Comic Books</Link>
+      </nav>
+    </div>
   );
 };
 
-export default Nav;
+export default div;

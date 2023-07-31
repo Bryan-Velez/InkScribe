@@ -14,7 +14,6 @@ import './App.css'
 const App = () => {
   return (
     <div className="app">
-      <h1>Inkscribe Studio</h1>
       <Nav/>
       <Routes>
         <Route exact path="/" element={<Home />}></Route>

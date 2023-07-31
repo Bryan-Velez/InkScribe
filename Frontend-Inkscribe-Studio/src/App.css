@@ -5,13 +5,24 @@
   text-align: center;
 }
 
+.header {
+  background-color: #007bff;
+}
 
+.header nav {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 10px;
+  
+}
 
 .loading-animation {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 30vh;
+  height: 10vh;
   background-color: #f0f0f07a;
   border-radius: 50%;
   border: solid 1px white;
@@ -20,6 +31,7 @@
 .pop-art-text {
   font-family: 'Comic Sans MS', cursive; 
   font-size: 36px;
+  font-weight: 800;
   color: #ff0000;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -42,8 +54,9 @@
 /* Comic List Page */
 
 .comic-book-list {
-  background-color: #808080;
+  background-color: #e0e0e0;
   padding: 70px;
+  
 }
 
 .comic-book-list ul {
@@ -64,8 +77,8 @@
 .comic-edit-page form {
   padding: 20px;
   font-weight: 800;
-  background-color: rgba(139, 133, 133, 0.637);
-  border: solid 2px #ff9564;
+  background-color: rgba(255, 255, 255, 0.637);
+  border: solid 3px #ff7b3e;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -84,7 +97,7 @@
   gap: 20px;
   padding: 2%;
   margin-bottom: 20px;
-  background-color: #ff9564;
+  background-color: #ff7b3e;
 }
 
 .page-list {
