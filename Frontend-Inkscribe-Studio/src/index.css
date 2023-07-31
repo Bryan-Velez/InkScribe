@@ -1,14 +1,12 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Comic Sans MS', cursive; 
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
   color: rgba(244, 23, 23, 0.87);
   background-image:linear-gradient(to bottom, #4882f7, #ccc, #f79a48);
   background-image: url(https://github.com/Bryan-Velez/InkScribe/blob/main/Frontend-Inkscribe-Studio/src/assets/Comic%20Background.jpeg?raw=true);
   background-size: cover;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -26,7 +24,8 @@ a:hover {
 }
 
 body {
-  /* margin: 0; */
+  margin: 0;
+  padding: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
@@ -36,9 +35,14 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-  /* background-color: #f7f7f7de; */
+  background-image: linear-gradient(to right, #cccccc00, #ccc, #cccccc00);
+  padding: 10px;
+  text-shadow: 2px 2px 4px #213547;
 }
 
+p {
+  color: white;
+}
 button {
   border-radius: 8px;
   border: 1px solid transparent;

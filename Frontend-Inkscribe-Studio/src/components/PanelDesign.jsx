@@ -98,7 +98,7 @@ const PanelDesign = () => {
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
-        style={{ border: '1px solid black' }}
+        style={{ border: '1px solid black', background: 'white' }}
       />
 
       {/* Speech bubble text area */}

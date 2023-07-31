@@ -96,7 +96,7 @@ const PageEdit = () => {
 
   return (
     <div className="page-edit">
-      <h2>Edit Page</h2>
+      <h1>Edit Page</h1>
       <form onSubmit={handleSubmit}>
         {formError && <div>{formError}</div>}
         <label>

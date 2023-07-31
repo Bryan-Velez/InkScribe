@@ -72,7 +72,7 @@ const ComicBookEdit = () => {
   return (
     <div className="comic-edit-page">
       <h1>Edit Comic Book</h1>
-      <h3>{comicBookData.title}</h3>
+      <h3 style={{color: 'white'}}>{comicBookData.title}</h3>
       <form onSubmit={handleSubmit}>
         {formError && <div>{formError}</div>}
         <label>

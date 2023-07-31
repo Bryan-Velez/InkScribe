@@ -1,12 +1,19 @@
 #root {
-  max-width: 1280px;
+  /* max-width: 1280px; */
   margin: 0 auto;
-  padding: 2rem;
+  /* padding: 2rem; */
   text-align: center;
 }
 
 .header {
   background-color: #007bff;
+  width: 100vw;
+  /* margin: 60px; */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  /* font-size: 15px; */
 }
 
 .header nav {
@@ -14,24 +21,47 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  padding: 10px;
-  
+  justify-content: space-evenly;
+  /* padding: 10px; */
+  width: 100%;
 }
 
+.nav-link {
+  margin-right: 10px; /* Adjust the value as needed */
+  padding: 8px 16px; /* Adjust the values as needed */
+  text-decoration: none;
+  color: #604aeb;
+  font-weight: 500;
+  transition: color 0.25s;
+}
+
+.nav-link:hover {
+  color: #ff9564;
+}
+
+/* //////////////////////////////////////////////////////////////// */
+/* Loading Animation */
+
 .loading-animation {
+  height: 10vh;
+  max-width: 30vw;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 10vh;
-  background-color: #f0f0f07a;
+  background-color: #f0f0f094;
   border-radius: 50%;
   border: solid 1px white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .pop-art-text {
   font-family: 'Comic Sans MS', cursive; 
   font-size: 36px;
   font-weight: 800;
+  text-shadow: 2px 2px 4px #213547;
   color: #ff0000;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -54,7 +84,7 @@
 /* Comic List Page */
 
 .comic-book-list {
-  background-color: #e0e0e0;
+  background-color: #e0e0e0df;
   padding: 70px;
   
 }
@@ -63,7 +93,8 @@
   display: flex;
   flex-direction: column;
   background-color: #4a4a4a95;
-  border: 1px solid white;
+  border: 3px solid white;
+  border-radius: 20px;
   padding: 30px;
   padding-left: 50px;
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const div = () => {
+const Nav = () => {
   return (
     <div className="header">
       <h1>InkScribe Studio</h1>
@@ -13,4 +13,4 @@ const div = () => {
   );
 };
 
-export default div;
+export default Nav;
