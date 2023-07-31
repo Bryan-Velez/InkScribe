@@ -7,7 +7,7 @@ import Loading from "./Loading";
 
 const URL = import.meta.env.VITE_BASE_URL;
 
-const PanelEdit = ({ pageId }) => {
+const PanelEdit = ({ pageId, panels }) => {
   const { comicBookId, id } = useParams();
   const [panelData, setPanelData] = useState({
     speech_bubbles: [],
@@ -69,6 +69,7 @@ const PanelEdit = ({ pageId }) => {
       width: size.width,
       height: size.height,
     }));
+    savePanelChanges();
   };
 
   ////////////////////////////////////////////////////////////////
@@ -81,6 +82,7 @@ const PanelEdit = ({ pageId }) => {
       x: prevPanelData.x + deltaX,
       y: prevPanelData.y + deltaY,
     }));
+    savePanelChanges();
   };
 
 

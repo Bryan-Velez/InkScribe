@@ -52,17 +52,20 @@ const PageEdit = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!pageData.page_number.trim()) {
-      setFormError("Page # field is required");
-      return;
-    }
-    const parsedPageNumber = parseInt(pageData.page_number, 10);
-    if (isNaN(parsedPageNumber)) {
-      setFormError("Page # must be a valid and unique number");
-      return;
-    }
+    const pageNumber = String(pageData.page_number).trim();
+
+  if (!pageNumber) {
+    setFormError("Page # field is required");
+    return;
+  }
+
+  const parsedPageNumber = parseInt(pageNumber, 10);
+  if (isNaN(parsedPageNumber)) {
+    setFormError("Page # must be a valid and unique number");
+    return;
+  }
     try {
-      await axios.put(`${URL}pages/${id}`, pageData);
+      await axios.put(`${URL}comicbooks/${comicBookId}/pages/${id}`, pageData);
       // Optionally, you can redirect to the page details after editing
       // window.location.href = `/pages/${id}`;
     } catch (error) {
@@ -142,7 +145,7 @@ const PageEdit = () => {
         <PanelEdit
           comicBookId={comicBookId}
           pageId={pageData.page_number}
-          // panelId={pageData.panels.panel_number}
+          // panels={pageData.panels}
         />
       {/* )} */}
     </div>

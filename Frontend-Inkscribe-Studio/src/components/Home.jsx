@@ -2,8 +2,9 @@ import React from 'react';
 
 const HomePage = () => {
   return (
-    <div>
+    <div className='home'>
       <h1>Welcome to Inkscribe Studio</h1>
+      <div>
       <p>
         Unleash your imagination and embark on a thrilling journey into the world of comic book creation!
       </p>
@@ -16,6 +17,7 @@ const HomePage = () => {
       <p>
         So, what are you waiting for? Join our vibrant community of creators and start weaving your comic book magic today!
       </p>
+      </div>
       {/* Render login or sign-up forms */}
     </div>
   );

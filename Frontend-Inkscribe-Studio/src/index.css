@@ -6,6 +6,8 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-image:linear-gradient(to bottom, #4882f7, #ccc, #f79a48);
+  background-image: url(https://cdn3.vectorstock.com/i/1000x1000/16/22/comic-book-page-background-template-vector-36581622.jpg);
+  background-size: cover;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
