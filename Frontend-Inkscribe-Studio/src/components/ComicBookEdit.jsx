@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import { Button } from 'react-bootstrap'
 import axios from "axios";
 import Loading from "./Loading";
 import PageList from "./PageList";
@@ -121,7 +122,7 @@ const ComicBookEdit = () => {
             }
           />
         </label>
-        <button type="submit">Save Changes</button>
+        <Button type="submit">Save Changes</Button>
       </form>
 
       {comicBookData.id && (

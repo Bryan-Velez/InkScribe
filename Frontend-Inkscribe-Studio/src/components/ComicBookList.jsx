@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { Button } from 'react-bootstrap'
 import { Link } from "react-router-dom"
 import axios from "axios"
 import Loading from "./Loading"
@@ -98,14 +99,14 @@ const ComicBookList = () => {
         {comicBooks.map((comicBook) => (
           <li key={comicBook.id}>
             <Link to={`/comicbooks/${comicBook.id}`}>{comicBook.title}</Link>
-            <button onClick={() => handleDeleteConfirmation(comicBook.id)}>
+            <Button onClick={() => handleDeleteConfirmation(comicBook.id)}>
               Delete
-            </button>
+            </Button>
           </li>
         ))}
       </ul>
 
-      <button onClick={handleAddComicModalOpen}>Add New Comic Book</button>
+      <Button onClick={handleAddComicModalOpen}>Add New Comic Book</Button>
       {showAddComicModal && (
         <ComicBookAdd
           onComicBookAdded={handleComicBookAdded}
@@ -116,8 +117,8 @@ const ComicBookList = () => {
         <div className="modal-overlay">
         <div className="confirmation-modal" style={{backgroundColor: 'rgb(90,90,90,.7)'}}>
           <p>Are you sure you want to delete this Comic Book?</p>
-          <button onClick={handleConfirmDelete}>Yes</button>
-          <button onClick={handleCancelDelete}>No</button>
+          <Button onClick={handleConfirmDelete}>Yes</Button>
+          <Button onClick={handleCancelDelete}>No</Button>
         </div>
         </div>
       )}

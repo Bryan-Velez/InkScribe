@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Button } from 'react-bootstrap'
+
 import axios from "axios";
 
 const URL = import.meta.env.VITE_BASE_URL;
@@ -52,9 +54,9 @@ const ComicBookAdd = ({ onComicBookAdded, onClose }) => {
   return (
     <div className="modal-overlay" onClick={handleOutsideClick}>
       <div className="modal">
-        <button type="button" onClick={onClose} style={{ float: "right" }}>
+        <Button type="button" onClick={onClose} style={{ float: "right" }}>
           x
-        </button>
+        </Button>
         <h2>Add New Comic Book</h2>
         <form onSubmit={handleSubmit}>
           {formError && <div>{formError}</div>}
@@ -113,7 +115,7 @@ const ComicBookAdd = ({ onComicBookAdded, onClose }) => {
             />
           </label>
           <br />
-          <button type="submit">Create Comic Book</button>
+          <Button type="submit">Create Comic Book</Button>
         </form>
       </div>
     </div>

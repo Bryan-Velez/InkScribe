@@ -8,13 +8,13 @@ import PageEdit from "./components/PageEdit";
 import PanelList from "./components/PanelList";
 import PanelEdit from "./components/PanelEdit";
 import PanelDesign from "./components/PanelDesign";
-import Nav from "./components/Nav";
+import Navigation from "./components/Nav";
 import './App.css'
 
 const App = () => {
   return (
     <div className="app">
-      <Nav/>
+      <Navigation/>
       <Routes>
         <Route exact path="/" element={<Home />}></Route>
         <Route path="/comicbooks" element={<ComicBookList/>}/>

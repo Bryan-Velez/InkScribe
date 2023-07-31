@@ -4,7 +4,12 @@ import { Link } from "react-router-dom";
 const Nav = () => {
   return (
     <div className="header">
-      <h1>InkScribe Studio</h1>
+      <img
+        src="https://raw.githubusercontent.com/Bryan-Velez/InkScribe/main/Frontend-Inkscribe-Studio/src/assets/InkScribe%20Header.png"
+        alt=""
+  
+      />
+      
       <nav>
         <Link to="/">Home</Link>
         <Link to="/comicbooks">Comic Books</Link>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Button } from 'react-bootstrap'
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Loading from "./Loading";
@@ -131,7 +132,7 @@ const PageEdit = () => {
           />
         </label>
         <br />
-        <button type="submit">Save Changes</button>
+        <Button type="submit">Save Changes</Button>
       </form>
       <h2>Panel List</h2>
       {/* Render the PanelList component */}

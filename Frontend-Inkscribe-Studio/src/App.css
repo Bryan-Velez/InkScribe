@@ -16,14 +16,21 @@
   /* font-size: 15px; */
 }
 
+.header img {
+  padding: 10px;
+  margin: 5px;
+  background-image: linear-gradient(to right, #cccccc00, #ccc, #ccc, #cccccc00);
+}
 .header nav {
   background-color: white;
   display: flex;
   flex-direction: row;
   justify-content: center;
   justify-content: space-evenly;
-  /* padding: 10px; */
+  padding: 10px;
   width: 100%;
+  font-size: large;
+  font-weight: 900;
 }
 
 .nav-link {
@@ -66,6 +73,7 @@
   text-transform: uppercase;
   letter-spacing: 2px;
   animation: pop 1s infinite; 
+  padding-left: 20px;
 }
 
 @keyframes pop {
@@ -128,7 +136,9 @@
   gap: 20px;
   padding: 2%;
   margin-bottom: 20px;
-  background-color: #ff7b3e;
+  background-color: #fc773ab0;
+  border: 3px solid rgba(255, 255, 255, 0.692);
+  border-radius: 20px;
 }
 
 .page-list {
@@ -136,7 +146,8 @@
   display: inline-block;
   white-space: nowrap;
   padding: 20px;
-  background-color: #007bff;
+  background-color: #177dea;
+  border-radius: 20px;
 }
 
 .page-card {
@@ -147,10 +158,11 @@
   display: inline-block;
   width: 200px;
   margin-right: 10px;
-  border: 1px solid #ccc;
+  border: 2px solid #060606;
   border-radius: 5px;
   padding: 10px;
   text-align: center;
+  background-color: rgb(216, 216, 216);
 }
 
 .page-card img {

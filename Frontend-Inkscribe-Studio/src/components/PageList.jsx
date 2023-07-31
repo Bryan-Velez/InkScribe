@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Button, Card } from 'react-bootstrap'
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import Loading from "./Loading";
@@ -48,13 +49,13 @@ const PageList = ({ URL, comicBookId }) => {
 
   const handleDeletePage = async (id) => {
     try {
-      // Send a DELETE request to the API to delete the page
-      await axios.delete(`${URL}pages/${id}`);
+      const deleteURL = `${URL}comicbooks/${comicBookId}/pages/${id}`;
+      console.log("Delete URL:", deleteURL)
+      await axios.delete(`${URL}comicbooks/${comicBookId}/pages/${id}`);
 
-      // Update the pages state to remove the deleted page
       setPages((prevPages) => prevPages.filter((page) => page.id !== id));
     } catch (error) {
-      console.error("Error deleting page:", error);
+      console.error("Error deleting page:", error.response?.data || error);
     }
   };
 
@@ -99,21 +100,21 @@ const PageList = ({ URL, comicBookId }) => {
             to={`/comicbooks/${comicBookId}/pages/${page.page_number}`}
             key={page.id}
           >
-            <div className="page-card">
-              <img src={page.photo_url} alt="" />
+            <Card className="page-card">
+              <Card.Img src={page.photo_url} alt="" />
               <h3>{page.page_number}</h3>
-              <p>{page.description}</p>
-              <button
+              <Card.Text>{page.description}</Card.Text>
+              <Button
                 onClick={(event) => handleDeleteConfirmation(event, page.id)}
               >
                 Delete
-              </button>
-            </div>
+              </Button>
+            </Card>
           </Link>
         ))}
       </div>
 
-      <button onClick={handleAddPageModalOpen}>Add Page</button>
+      <Button onClick={handleAddPageModalOpen}>Add Page</Button>
       {showAddPageModal && (
         <PageAdd
           comicBookId={comicBookId}
@@ -128,8 +129,8 @@ const PageList = ({ URL, comicBookId }) => {
             style={{ backgroundColor: "rgb(90,90,90,.7)" }}
           >
             <p>Are you sure you want to delete this page?</p>
-            <button onClick={handleConfirmDelete}>Yes</button>
-            <button onClick={handleCancelDelete}>No</button>
+            <Button onClick={handleConfirmDelete}>Yes</Button>
+            <Button onClick={handleCancelDelete}>No</Button>
           </div>
         </div>
       )}
