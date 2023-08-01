@@ -9,7 +9,12 @@ const HomePage = () => {
         <Col xs={6} md={4}>
           <Image src="https://github.com/Bryan-Velez/InkScribe/blob/main/Frontend-Inkscribe-Studio/src/assets/OK.png?raw=true" roundedCircle />
         </Col>
-        <Col xs={6} md={4} style={{ fontSize:'20px'}}>
+        <Col xs={6} md={4} style={{ 
+          fontSize:'20px',
+          color:'black',
+          height: '200px',
+          
+      }}>
           <p>
             Unleash your imagination and embark on a thrilling journey into the
             world of comic book creation!

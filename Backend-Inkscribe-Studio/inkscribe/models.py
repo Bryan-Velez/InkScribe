@@ -52,6 +52,7 @@ class Panel(models.Model):
     x = models.IntegerField()
     y = models.IntegerField()
     photo_url = models.TextField(blank=True, null=True)
+    
 
     class Meta:
         unique_together = ('page', 'panel_number')

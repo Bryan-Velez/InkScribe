@@ -27,6 +27,7 @@ const PanelList = ({ comicBookId, pageId }) => {
      
     if (loading) {
         return <Loading />;
+        console.log(panel.page)
       }
     
       if (loadError) {
@@ -42,7 +43,6 @@ const PanelList = ({ comicBookId, pageId }) => {
       .filter((panel) => panel.page === parseInt(pageId))
       .map((panel) => (
         <Link key={panel.id} to={`/comicbooks/${comicBookId}/pages/${pageId}/panels/${panel.panel_number}`}>
-          console.log(panel.page)
           <div key={panel.id} className="panel-card" style={{ backgroundColor: 'grey' }}>
             <img src={panel.photo_url} alt='' />
             <h3>{`Panel ${panel.panel_number}`}</h3>

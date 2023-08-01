@@ -143,11 +143,11 @@ const PageEdit = () => {
       {/* pageData.panels && */}
 
       {/* {selectedPanel && ( */}
-        {/* <PanelEdit
+        <PanelEdit
           comicBookId={comicBookId}
           pageId={pageData.page_number}
           // panels={pageData.panels}
-        /> */}
+        />
       {/* )} */}
     </div>
   );
