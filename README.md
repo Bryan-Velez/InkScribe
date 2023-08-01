@@ -100,4 +100,5 @@ Connect with Me
 Stay updated with InkScribe Studio and join our community:
 
 [LinkedIn](https://www.linkedin.com/in/bryanvelez-se/)
+<br>
 Feel free to contribute to the project or report any issues you encounter. I value your feedback and look forward to seeing your creative comics!
