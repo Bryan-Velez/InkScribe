@@ -97,6 +97,7 @@ depositphotos.com
 <br>
 
 Connect with Me
+<br>
 Stay updated with InkScribe Studio and join our community:
 
 [LinkedIn](https://www.linkedin.com/in/bryanvelez-se/)
