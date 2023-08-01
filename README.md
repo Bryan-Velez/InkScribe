@@ -7,7 +7,7 @@
 Welcome to InkScribe Studio, a powerful platform that empowers your imagination to craft captivating comic book stories. Whether you're an experienced artist or a budding creator, InkScribe Studio offers a creative space to design stunning visual narratives that will mesmerize your readers.
 
 ---
-
+<br>
 
 Table of Contents:
 - Description
@@ -27,11 +27,11 @@ InkScribe Studio is a web-based application that allows users to create, edit, a
 ---
 
 
-Technologies Used
-Frontend: React, Bootstrap
-Backend: Django, Django REST Framework
-Database: PostgreSQL
-Cloud Hosting: Vercel (Backend)
+Technologies Used:
+- Frontend: React, Bootstrap
+- Backend: Django, Django REST Framework
+- Database: PostgreSQL
+- Cloud Hosting: Vercel (Backend)
 
 ---
 
@@ -39,18 +39,18 @@ Cloud Hosting: Vercel (Backend)
 Dependencies
 The frontend of InkScribe Studio utilizes the following dependencies:
 
-axios - Promise-based HTTP client for making API requests.
-bootstrap - A popular CSS framework for styling the user interface.
-cors - Middleware for enabling Cross-Origin Resource Sharing.
-react - JavaScript library for building user interfaces.
-react-bootstrap - Bootstrap components implemented as React components.
-react-dnd - Drag and Drop for React.
-react-dnd-html5-backend - HTML5 backend for React DnD.
-react-dom - Entry point to the React DOM.
-react-draggable - Draggable elements for React.
-react-grid-layout - Responsive grid layout for React.
-react-resizable - Resizable components for React.
-react-router - Declarative routing for React.
+- axios - Promise-based HTTP client for making API requests.
+- bootstrap - A popular CSS framework for styling the user interface.
+- cors - Middleware for enabling Cross-Origin Resource Sharing.
+- react - JavaScript library for building user interfaces.
+- react-bootstrap - Bootstrap components implemented as React components.
+- react-dnd - Drag and Drop for React.
+- react-dnd-html5-backend - HTML5 backend for React DnD.
+- react-dom - Entry point to the React DOM.
+- react-draggable - Draggable elements for React.
+- react-grid-layout - Responsive grid layout for React.
+- react-resizable - Resizable components for React.
+- react-router - Declarative routing for React.
 
 ---
 
