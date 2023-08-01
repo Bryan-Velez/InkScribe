@@ -27,7 +27,7 @@ Description:
 <br>
 InkScribe Studio is a web-based application that allows users to create, edit, and publish their comic books. With a user-friendly interface, artists and writers can collaborate, bring characters to life, and build captivating stories. The platform offers a range of tools and features for comic book creation, including panel layout design, speech bubble creation, and more.
 
-Here is a link to my [CHD](https://lucid.app/lucidchart/209f644c-4a98-4990-b2db-1796c0ea895f/edit?invitationId=inv_9dbd6042-1206-4867-9cdc-e705990dc921) and my [ERD](https://lucid.app/lucidchart/56cef823-b236-4e23-8fd1-96199099885c/edit?invitationId=inv_661506ef-32e5-42a7-bd71-6deb77b4fb98).
+Here is a link to my [CHD](https://lucid.app/lucidchart/209f644c-4a98-4990-b2db-1796c0ea895f/edit?invitationId=inv_9dbd6042-1206-4867-9cdc-e705990dc921){:target="_blank"} and my [ERD](https://lucid.app/lucidchart/56cef823-b236-4e23-8fd1-96199099885c/edit?invitationId=inv_661506ef-32e5-42a7-bd71-6deb77b4fb98){:target="_blank"}.
 
 ---
 <br>
@@ -110,6 +110,6 @@ Connect Me:
 <br>
 Stay updated with InkScribe Studio and join our community:
 
-[LinkedIn](https://www.linkedin.com/in/bryanvelez-se/)
+[LinkedIn](https://www.linkedin.com/in/bryanvelez-se/){:target="_blank"}
 <br>
 Feel free to contribute to the project or report any issues you encounter. I value your feedback and look forward to seeing your creative comics!
