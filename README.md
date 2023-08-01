@@ -84,14 +84,14 @@ I will continuously be working on improving InkScribe Studio to provide more fea
 <br>
 
 Credits & Resources:
-w3schools.com
-chatGPT.com
-fontspace.com
-depositphotos.com
+- w3schools.com
+- chatGPT.com
+- fontspace.com
+- depositphotos.com
 
  Special thanks to:
- General Assembly Staff
- Maxim Pavlenko for helping deploy the backend.
+ - General Assembly Staff
+ - Maxim Pavlenko for helping deploy the backend.
 
 ---
 <br>
