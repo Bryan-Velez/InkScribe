@@ -6,7 +6,7 @@
 }
 
 .header {
-  background-color: #007bff;
+  background-image: linear-gradient(to right, white, #007bff, #007bff, white);
   width: 100vw;
   /* margin: 60px; */
   position: fixed;
@@ -19,7 +19,8 @@
 .header img {
   padding: 10px;
   margin: 5px;
-  background-image: linear-gradient(to right, #cccccc00, #ccc, #ccc, #cccccc00);
+  background-image: linear-gradient(to right, #cccccc00, #ffffff, #ffffff, #cccccc00);
+  width: 650px;
 }
 .header nav {
   background-color: white;
@@ -107,14 +108,23 @@
 /* //////////////////////////////////////////////////////////////// */
 /* Comic Edit Page */
 
+.comic-edit-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .comic-edit-page form {
-  padding: 20px;
+  padding: 30px;
   font-weight: 800;
   background-color: rgba(255, 255, 255, 0.637);
   border: solid 3px #ff7b3e;
   border-radius: 8px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  justify-self: center;
+  max-width: 80%;
 
 }
 
@@ -133,6 +143,7 @@
   background-color: #fc773ab0;
   border: 3px solid rgba(255, 255, 255, 0.692);
   border-radius: 20px;
+  max-width: 80%;
 }
 
 .page-list {
@@ -191,7 +202,7 @@
 
 .modal {
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #8d8d8d;
@@ -220,6 +231,7 @@
   width: 50vw;
   border: 1px solid #ccc;
   border-radius: 8px;
+  color: white;
 }
 
 .modal label {

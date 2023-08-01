@@ -34,10 +34,11 @@ body {
 
 h1 {
   font-size: 3.2em;
-  line-height: 1.1;
-  background-image: linear-gradient(to right, #cccccc00, #ccc, #cccccc00);
+  line-height: 1.4;
+  background-image: linear-gradient(to right, #cccccc00, #ffffff, #ffffff, #cccccc00);
   padding: 10px;
   text-shadow: 2px 2px 4px #213547;
+  border-radius: 100px;
 }
 
 button {
@@ -48,9 +49,10 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #626799;
+  background-color: #ddaf32;
   cursor: pointer;
   transition: border-color 0.25s;
+  box-shadow: 2px 4px 4px rgba(80, 80, 80);
 }
 button:hover {
   border-color: #fbfbfb;

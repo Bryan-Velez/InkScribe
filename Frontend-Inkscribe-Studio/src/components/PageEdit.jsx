@@ -100,7 +100,7 @@ const PageEdit = () => {
       <h1>Edit Page</h1>
       <Form onSubmit={handleSubmit}>
         {formError && <div>{formError}</div>}
-        <Form.Label>
+        <Form.Label style={{ marginBottom: "1rem" }}>
           <p>Page Number:</p>
           <input
             type="text"
@@ -111,7 +111,7 @@ const PageEdit = () => {
             />
         </Form.Label>
         <br />
-        <Form.Label>
+        <Form.Label style={{ marginBottom: "1rem" }}>
           <p>Image (URL):</p>
           <input
             type="text"
@@ -122,7 +122,7 @@ const PageEdit = () => {
             />
         </Form.Label>
         <br />
-        <Form.Label>
+        <Form.Label style={{ marginLeft: "1rem" }}>
           <p>Description:</p>
           <textarea
             value={pageData.description}

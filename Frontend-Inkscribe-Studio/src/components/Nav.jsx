@@ -17,6 +17,7 @@ const Nav = () => {
       border: '3px solid #007bff',
       borderRadius: '50px',
       height: '30px',
+      boxShadow: '-6px 6px 10px rgba(120, 120, 120)',
   }
 
 

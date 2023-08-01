@@ -76,7 +76,7 @@ const ComicBookEdit = () => {
       <h3 style={{color: 'white'}}>{comicBookData.title}</h3>
       <Form onSubmit={handleSubmit}>
         {formError && <div>{formError}</div>}
-        <Form.Label>
+        <Form.Label style={{ marginLeft: "1rem" }}>
           Title:
           <input
             type="text"
@@ -86,7 +86,7 @@ const ComicBookEdit = () => {
             }
           />
         </Form.Label>
-        <Form.Label>
+        <Form.Label style={{ marginLeft: "1rem" }}>
           Issue #:
           <input
             type="text"
@@ -99,7 +99,7 @@ const ComicBookEdit = () => {
             }
           />
         </Form.Label>
-        <Form.Label>
+        <Form.Label style={{ marginLeft: "1rem" }}>
           Issue Cover (URL):
           <input
             type="text"
@@ -109,10 +109,10 @@ const ComicBookEdit = () => {
             }
           />
         </Form.Label>
-        <Form.Label>
+        <Form.Label style={{ marginLeft: "1rem" }}>
           Description:
           <textarea
-            style={{ width: "30vw" }}
+            style={{ width: "25vw" }}
             value={comicBookData.description || ""}
             onChange={(e) =>
               setComicBookData({
