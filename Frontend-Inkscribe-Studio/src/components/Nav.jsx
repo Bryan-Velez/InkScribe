@@ -11,15 +11,15 @@ const Nav = () => {
       color: '#604aeb',
       fontWeight: '900',
       transition: 'color 0.25s',
-      backgroundColor: '#ff8800c4',
-      border: '1px solid #604aeb',
+      backgroundColor: '#f36c2ecb',
+      backgroundSize: '110px',
+      backgroundPosition: 'center',
+      border: '1px solid blue',
       borderRadius: '50px',
-
-      
-    // .nav-link:hover {
-    //   color: #ff9564;
-    
+      height: '30px',
   }
+
+
   return (
     <div className="header">
       <img

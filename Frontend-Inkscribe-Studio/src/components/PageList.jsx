@@ -47,13 +47,13 @@ const PageList = ({ URL, comicBookId }) => {
   ////////////////////////////////////////////////////////////////
   // Delete Page
 
-  const handleDeletePage = async (id) => {
+  const handleDeletePage = async (page_number) => {
     try {
-      const deleteURL = `${URL}comicbooks/${comicBookId}/pages/${id}`;
-      console.log("Delete URL:", deleteURL)
-      await axios.delete(`${URL}comicbooks/${comicBookId}/pages/${id}`);
+      // const deleteURL = `${URL}comicbooks/${comicBookId}/pages/${page_number}`;
+      // console.log("Delete URL:", deleteURL)
+      await axios.delete(`${URL}comicbooks/${comicBookId}/pages/${pageToDelete}`);
 
-      setPages((prevPages) => prevPages.filter((page) => page.id !== id));
+      setPages((prevPages) => prevPages.filter((page) => page.page_number !== page_number));
     } catch (error) {
       console.error("Error deleting page:", error.response?.data || error);
     }
@@ -62,14 +62,16 @@ const PageList = ({ URL, comicBookId }) => {
   ////////////////////////////////////////////////////////////////
   // Delete Confirmation
 
-  const handleDeleteConfirmation = (event, id) => {
+  const handleDeleteConfirmation = (event, page_number) => {
     event.preventDefault();
-    setPageToDelete(id);
+    setPageToDelete(page_number);
     setShowConfirmationModal(true);
   };
 
   const handleConfirmDelete = () => {
-    handleDeletePage(pageToDelete);
+    const { page_number } = pageToDelete
+    console.log(pageToDelete)
+    handleDeletePage(page_number);
     setShowConfirmationModal(false);
   };
 
@@ -95,7 +97,9 @@ const PageList = ({ URL, comicBookId }) => {
   return (
     <div className="page-scroll-container">
       <div className="page-list">
-        {pages.map((page) => (
+        {pages.map((page) => {
+          // console.log(page)
+          return (
           <Link
             to={`/comicbooks/${comicBookId}/pages/${page.page_number}`}
             key={page.id}
@@ -105,13 +109,13 @@ const PageList = ({ URL, comicBookId }) => {
               <h3>{page.page_number}</h3>
               <Card.Text>{page.description}</Card.Text>
               <Button
-                onClick={(event) => handleDeleteConfirmation(event, page.id)}
+                onClick={(event) => handleDeleteConfirmation(event, page.page_number)}
               >
                 Delete
               </Button>
             </Card>
-          </Link>
-        ))}
+          </Link>)
+        })}
       </div>
 
       <Button onClick={handleAddPageModalOpen}>Add Page</Button>

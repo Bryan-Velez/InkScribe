@@ -13,7 +13,7 @@ import './App.css'
 
 const App = () => {
   return (
-    <div className="app">
+    <div className="app" style={{marginTop: '250px'}}>
       <Navigation/>
       <Routes>
         <Route exact path="/" element={<Home />}></Route>

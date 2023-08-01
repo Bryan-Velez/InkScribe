@@ -39,7 +39,7 @@ const PanelList = ({ comicBookId, pageId }) => {
   return (
     <div className="panel-list">
       {panels.map((panel) => (
-        <Link key={panel.id} to={`/comicbooks/${comicBookId}/pages/${pageId}/panels/${panels.panel_number}`}>
+        <Link key={panel.id} to={`/comicbooks/${comicBookId}/pages/${pageId}/panels/${panel.panel_number}`}>
         <div key={panel.id} className="panel-card" style={{backgroundColor:'grey'}}>
           <img src={panel.photo_url} alt='' />
           <h3>{`Panel ${panel.panel_number}`}</h3>
