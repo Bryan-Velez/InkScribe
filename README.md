@@ -63,9 +63,11 @@ To experience the magic of InkScribe Studio, you can visit the deployed website 
 ---
 <br>
 
-Screenshots
-Screenshot 1
-Screenshot 2
+Screenshots:
+<br>
+- Home Page: ![](https://github.com/Bryan-Velez/InkScribe/blob/main/Frontend-Inkscribe-Studio/src/assets/Home%20page%20Screen%20Shot.png?raw=true)
+- Comic List Page: ![](https://github.com/Bryan-Velez/InkScribe/blob/main/Frontend-Inkscribe-Studio/src/assets/Comic%20list%20Screen%20Shot.png?raw=true)
+- Comic Edit Page: ![](https://github.com/Bryan-Velez/InkScribe/blob/main/Frontend-Inkscribe-Studio/src/assets/Comic%20Edit%20Screen%20shot.png?raw=true)
 
 ---
 <br>
