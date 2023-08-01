@@ -6,16 +6,31 @@ const HomePage = () => {
     <Container className="home">
       <h1>Welcome to Inkscribe Studio</h1>
       <Row>
-        <Col xs={6} md={4}>
-          <Image src="https://github.com/Bryan-Velez/InkScribe/blob/main/Frontend-Inkscribe-Studio/src/assets/OK.png?raw=true" roundedCircle />
+        <Col xs={6} md={4} >
+          <Image style={{borderRadius: '100px'}} src="https://github.com/Bryan-Velez/InkScribe/blob/main/Frontend-Inkscribe-Studio/src/assets/OK.png?raw=true" roundedCircle />
         </Col>
         <Col xs={6} md={4} style={{ 
           fontSize:'20px',
           color:'black',
-          height: '200px',
-          
+          height: '650px',
+          width: '975px',
+          backgroundImage: 'url(https://github.com/Bryan-Velez/InkScribe/blob/main/Frontend-Inkscribe-Studio/src/assets/Home%20intro%20background.jpg?raw=true)',
+          backgroundSize:'cover',
+          padding: '100px',
+          margin: '40px',
+          borderRadius: '100px',
+          textAlign: 'center'
+
       }}>
-          <p>
+          <p style={{ 
+            textAlign: 'center',
+            backgroundColor: 'rgba(255, 255, 255, 0.675)',
+            position: 'relative',
+            top: '100px',
+            left: '260px',
+            width: '500px',
+            borderRadius: '50px',
+        }}>
             Unleash your imagination and embark on a thrilling journey into the
             world of comic book creation!
         <br />

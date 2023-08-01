@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button } from 'react-bootstrap'
+import { Button, Form } from 'react-bootstrap'
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Loading from "./Loading";
@@ -98,9 +98,9 @@ const PageEdit = () => {
     return (
       <div className="page-edit">
       <h1>Edit Page</h1>
-      <form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         {formError && <div>{formError}</div>}
-        <label>
+        <Form.Label>
           <p>Page Number:</p>
           <input
             type="text"
@@ -109,9 +109,9 @@ const PageEdit = () => {
               setPageData({ ...pageData, page_number: e.target.value })
             }
             />
-        </label>
+        </Form.Label>
         <br />
-        <label>
+        <Form.Label>
           <p>Image (URL):</p>
           <input
             type="text"
@@ -120,9 +120,9 @@ const PageEdit = () => {
               setPageData({ ...pageData, photo_url: e.target.value })
             }
             />
-        </label>
+        </Form.Label>
         <br />
-        <label>
+        <Form.Label>
           <p>Description:</p>
           <textarea
             value={pageData.description}
@@ -130,10 +130,10 @@ const PageEdit = () => {
               setPageData({ ...pageData, description: e.target.value })
             }
             />
-        </label>
+        </Form.Label>
         <br />
         <Button type="submit">Save Changes</Button>
-      </form>
+      </Form>
       <h2>Panel List</h2>
       {/* Render the PanelList component */}
       <PanelList comicBookId={comicBookId} pageId={pageData.page_number} panels={pageData.panels} />

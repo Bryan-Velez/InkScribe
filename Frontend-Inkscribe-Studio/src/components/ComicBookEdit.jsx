@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Button } from 'react-bootstrap'
+import { Button, Form } from 'react-bootstrap'
 import axios from "axios";
 import Loading from "./Loading";
 import PageList from "./PageList";
@@ -74,9 +74,9 @@ const ComicBookEdit = () => {
     <div className="comic-edit-page">
       <h1>Edit Comic Book</h1>
       <h3 style={{color: 'white'}}>{comicBookData.title}</h3>
-      <form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         {formError && <div>{formError}</div>}
-        <label>
+        <Form.Label>
           Title:
           <input
             type="text"
@@ -85,8 +85,8 @@ const ComicBookEdit = () => {
               setComicBookData({ ...comicBookData, title: e.target.value })
             }
           />
-        </label>
-        <label>
+        </Form.Label>
+        <Form.Label>
           Issue #:
           <input
             type="text"
@@ -98,8 +98,8 @@ const ComicBookEdit = () => {
               })
             }
           />
-        </label>
-        <label>
+        </Form.Label>
+        <Form.Label>
           Issue Cover (URL):
           <input
             type="text"
@@ -108,8 +108,8 @@ const ComicBookEdit = () => {
               setComicBookData({ ...comicBookData, photo_url: e.target.value })
             }
           />
-        </label>
-        <label>
+        </Form.Label>
+        <Form.Label>
           Description:
           <textarea
             style={{ width: "30vw" }}
@@ -121,9 +121,9 @@ const ComicBookEdit = () => {
               })
             }
           />
-        </label>
+        </Form.Label>
         <Button type="submit">Save Changes</Button>
-      </form>
+      </Form>
 
       {comicBookData.id && (
         <>
