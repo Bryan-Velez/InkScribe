@@ -1,7 +1,7 @@
 # InkScribe
 
+![](https://github.com/Bryan-Velez/InkScribe/blob/main/Frontend-Inkscribe-Studio/src/assets/Readme%20Logo.png?raw=true)
 
-![](https://github.com/Bryan-Velez/InkScribe/blob/main/Frontend-InkScribe-Studio/src/assets/Readme%20Logo.png?raw=true)
 ## InkScribe Studio - Comic Book Creation Platform
 
 Welcome to InkScribe Studio, a powerful platform that empowers your imagination to craft captivating comic book stories. Whether you're an experienced artist or a budding creator, InkScribe Studio offers a creative space to design stunning visual narratives that will mesmerize your readers.
