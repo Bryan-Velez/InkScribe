@@ -15,7 +15,7 @@ const PanelList = ({ comicBookId, pageId }) => {
         axios
           .get(`${URL}comicbooks/${comicBookId}/pages/${pageId}/panels/`)
           .then((response) => {
-            console.log(pageId);
+            console.log(pageId, 'response', response.data);
             setPanels(response.data);
             setLoading(false);
           })
@@ -38,15 +38,19 @@ const PanelList = ({ comicBookId, pageId }) => {
 // Return
   return (
     <div className="panel-list">
-      {panels.map((panel) => (
+    {panels
+      .filter((panel) => panel.page === parseInt(pageId))
+      .map((panel) => (
         <Link key={panel.id} to={`/comicbooks/${comicBookId}/pages/${pageId}/panels/${panel.panel_number}`}>
-        <div key={panel.id} className="panel-card" style={{backgroundColor:'grey'}}>
-          <img src={panel.photo_url} alt='' />
-          <h3>{`Panel ${panel.panel_number}`}</h3>
-          <p>{panel.page}</p>
-        </div></Link>
+          console.log(panel.page)
+          <div key={panel.id} className="panel-card" style={{ backgroundColor: 'grey' }}>
+            <img src={panel.photo_url} alt='' />
+            <h3>{`Panel ${panel.panel_number}`}</h3>
+            <p>{panel.page}</p>
+          </div>
+        </Link>
       ))}
-    </div>
+  </div>
   );
 };
 
