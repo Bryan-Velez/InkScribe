@@ -4,6 +4,8 @@
 
 ## InkScribe Studio - Comic Book Creation Platform
 
+<br>
+
 Welcome to InkScribe Studio, a powerful platform that empowers your imagination to craft captivating comic book stories. Whether you're an experienced artist or a budding creator, InkScribe Studio offers a creative space to design stunning visual narratives that will mesmerize your readers.
 
 ---
@@ -19,13 +21,13 @@ Table of Contents:
 - Credits
 
 ---
-
+<br>
 
 Description
 InkScribe Studio is a web-based application that allows users to create, edit, and publish their comic books. With a user-friendly interface, artists and writers can collaborate, bring characters to life, and build captivating stories. The platform offers a range of tools and features for comic book creation, including panel layout design, speech bubble creation, character galleries, and more.
 
 ---
-
+<br>
 
 Technologies Used:
 - Frontend: React, Bootstrap
@@ -34,7 +36,7 @@ Technologies Used:
 - Cloud Hosting: Vercel (Backend)
 
 ---
-
+<br>
 
 Dependencies
 The frontend of InkScribe Studio utilizes the following dependencies:
@@ -53,20 +55,20 @@ The frontend of InkScribe Studio utilizes the following dependencies:
 - react-router - Declarative routing for React.
 
 ---
-
+<br>
 
 Getting Started
 To experience the magic of InkScribe Studio, you can visit the deployed website and start creating your comic book masterpiece. Add a comic book to your online collection by giving it a name and an issue number. Add pages and panels, and draw to create to your hearts content.
 
 ---
-
+<br>
 
 Screenshots
 Screenshot 1
 Screenshot 2
 
 ---
-
+<br>
 
 Future Updates
 I will continuously be working on improving InkScribe Studio to provide more features and a seamless user experience. Some planned updates include:
@@ -79,7 +81,7 @@ I will continuously be working on improving InkScribe Studio to provide more fea
 -Host a monthly contest where winners get their work published.
 
 ---
-
+<br>
 
 Credits & Resources:
 w3schools.com
@@ -92,7 +94,7 @@ depositphotos.com
  Maxim Pavlenko for helping deploy the backend.
 
 ---
-
+<br>
 
 Connect with Me
 Stay updated with InkScribe Studio and join our community:
