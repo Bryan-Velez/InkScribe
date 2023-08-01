@@ -80,12 +80,13 @@ Future Updates:
 <br>
 I will continuously be working on improving InkScribe Studio to provide more features and a seamless user experience. Some planned updates include:
 
--Add images from media files.
--Collaboration tools for multiple creators on a single comic book.
--Expanded character and prop galleries to fuel creativity.
--Integration with cloud storage platforms for easy file management.
--Posting Comic Books to online community.
--Host a monthly contest where winners get their work published.
+- Add images from media files.
+- Add the ability to draw with colors brush strokes and halftones.
+- Collaboration tools for multiple creators on a single comic book.
+- Expanded character and prop galleries to fuel creativity.
+- Integration with cloud storage platforms for easy file management.
+- Posting Comic Books to online community.
+- Host a monthly contest where winners get their work published.
 
 ---
 <br>
