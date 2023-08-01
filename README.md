@@ -29,6 +29,7 @@ InkScribe Studio is a web-based application that allows users to create, edit, a
 
 Here is a link to my [CHD](https://lucid.app/lucidchart/209f644c-4a98-4990-b2db-1796c0ea895f/edit?viewport_loc=-68%2C189%2C2892%2C1621%2C0_0&invitationId=inv_9dbd6042-1206-4867-9cdc-e705990dc921) and my [ERD](https://lucid.app/lucidchart/56cef823-b236-4e23-8fd1-96199099885c/edit?viewport_loc=-652%2C-664%2C2361%2C1612%2C0_0&invitationId=inv_661506ef-32e5-42a7-bd71-6deb77b4fb98).
 ---
+---
 <br>
 
 Technologies Used:
