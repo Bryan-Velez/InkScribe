@@ -33,7 +33,7 @@ Technologies Used:
 - Frontend: React, Bootstrap
 - Backend: Django, Django REST Framework
 - Database: PostgreSQL
-- Cloud Hosting: Vercel (Backend)
+- Cloud Hosting: Vercel (Backend), Netlify (Frontend)
 
 ---
 <br>
@@ -53,12 +53,13 @@ The frontend of InkScribe Studio utilizes the following dependencies:
 - react-grid-layout - Responsive grid layout for React.
 - react-resizable - Resizable components for React.
 - react-router - Declarative routing for React.
+- react-router-dom: Declarative routing for React, enabling dynamic navigation based on URLs.
 
 ---
 <br>
 
 Getting Started
-To experience the magic of InkScribe Studio, you can visit the deployed website and start creating your comic book masterpiece. Add a comic book to your online collection by giving it a name and an issue number. Add pages and panels, and draw to create to your hearts content.
+To experience the magic of InkScribe Studio, you can visit the [deployed website](https://inkscribestudio.netlify.app/) and start creating your comic book masterpiece. Add a comic book to your online collection by giving it a name and an issue number. Add pages and panels, and draw to create to your hearts content.
 
 ---
 <br>
