@@ -23,7 +23,8 @@ Table of Contents:
 ---
 <br>
 
-Description
+Description:
+<br>
 InkScribe Studio is a web-based application that allows users to create, edit, and publish their comic books. With a user-friendly interface, artists and writers can collaborate, bring characters to life, and build captivating stories. The platform offers a range of tools and features for comic book creation, including panel layout design, speech bubble creation, character galleries, and more.
 
 ---
@@ -39,6 +40,7 @@ Technologies Used:
 <br>
 
 Dependencies
+<br>
 The frontend of InkScribe Studio utilizes the following dependencies:
 
 - axios - Promise-based HTTP client for making API requests.
@@ -58,7 +60,8 @@ The frontend of InkScribe Studio utilizes the following dependencies:
 ---
 <br>
 
-Getting Started
+Getting Started:
+<br>
 To experience the magic of InkScribe Studio, you can visit the [deployed website](https://inkscribestudio.netlify.app/) and start creating your comic book masterpiece. Add a comic book to your online collection by giving it a name and an issue number. Add pages and panels, and draw to create to your hearts content.
 
 ---
@@ -73,7 +76,8 @@ Screenshots:
 ---
 <br>
 
-Future Updates
+Future Updates:
+<br>
 I will continuously be working on improving InkScribe Studio to provide more features and a seamless user experience. Some planned updates include:
 
 -Add images from media files.
@@ -99,7 +103,7 @@ Credits & Resources:
 ---
 <br>
 
-Connect with Me
+Connect Me:
 <br>
 Stay updated with InkScribe Studio and join our community:
 
