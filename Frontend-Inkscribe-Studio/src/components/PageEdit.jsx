@@ -75,12 +75,6 @@ const PageEdit = () => {
   };
   
   
-  // const handlePanelSelect = (panelId) => {
-    //   // Find the selected panel data from the list of panels
-    //   const selectedPanelData = pageData.panels.find((panel) => panel.id === panelId);
-    //   setSelectedPanel(selectedPanelData);
-    // };
-    
     ////////////////////////////////////////////////////////////////
     // Loading Animation
     

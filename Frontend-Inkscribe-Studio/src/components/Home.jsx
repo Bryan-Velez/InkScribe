@@ -5,11 +5,11 @@ const HomePage = () => {
   return (
     <Container className="home">
       <h1>Welcome to Inkscribe Studio</h1>
-      <Row>
-        <Col xs={6} md={4} >
+      <Col>
+        <Row xs={6} md={4} >
           <Image style={{borderRadius: '100px'}} src="https://github.com/Bryan-Velez/InkScribe/blob/main/Frontend-Inkscribe-Studio/src/assets/OK.png?raw=true" roundedCircle />
-        </Col>
-        <Col xs={6} md={4} style={{ 
+        </Row>
+        <Row xs={6} md={4} style={{ 
           fontSize:'20px',
           color:'black',
           height: '650px',
@@ -46,8 +46,8 @@ const HomePage = () => {
             So, what are you waiting for? Join our vibrant community of creators
             and start weaving your comic book magic today!
           </p>
-        </Col>
-      </Row>
+        </Row>
+      </Col>
       {/* Render login or sign-up forms */}
     </Container>
   );
